@@ -1,15 +1,18 @@
-import React from 'react';
+import React from "react";
+import "./css/Habit.css";
 
 const Habit = props => {
   return (
-    <div>
-      <h3>{props.habit.habit_name}</h3>
-      <button onClick={() => props.completeHabit(props.habit)} >Done</button>
-      <h4>30 Days: {props.habit.thirtyGPA}</h4>
-      <h4>60 Days: {props.habit.sixtyGPA}</h4>
-      <h4>90 Days: {props.habit.ninetyGPA}</h4>
+    <div className="habit-wrapper">
+      <div className="habit-ctn">
+        <button onClick={() => props.completeHabit(props.habit)}>Done</button>
+        <p className="name">{props.habit.habit_name}</p>
+        <p className="GPA">30 Days: {props.habit.thirtyGPA * 100}%</p>
+        <p className="GPA">60 Days: {props.habit.sixtyGPA * 100}%</p>
+        <p className="GPA">90 Days: {props.habit.ninetyGPA * 100}%</p>
+      </div>
     </div>
-  )
-}
+  );
+};
 
 export default Habit;

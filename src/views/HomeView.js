@@ -215,8 +215,8 @@ class HomeView extends React.Component {
   render() {
     return (
       <div>
-        <LifeGPADisplay />
-        <AddHabit addHabit={this.addHabit} />
+        <LifeGPADisplay lifeGPA={this.state.totalLifeGPA} />
+        {/* <AddHabit addHabit={this.addHabit} /> */}
         <HabitsList
           habits={this.state.finalHabitsArray}
           completeHabit={this.completeHabit}

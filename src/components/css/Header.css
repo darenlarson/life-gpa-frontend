@@ -1,0 +1,31 @@
+header {
+  background-color: black;
+  padding: 10px 0;
+}
+
+.header-ctn {
+  margin: 0 20px;
+
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.logo {
+  color: #D87B92;
+}
+
+nav button {
+  color: white;
+  background-color: black;
+  border: 1px solid white;
+  border-radius: 5px;
+  margin: 0 10px;
+}
+
+nav button:hover {
+  cursor: pointer;
+  color: #D87B92;
+  background-color: black;
+  border-color: #D87B92;
+}

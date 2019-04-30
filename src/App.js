@@ -1,9 +1,10 @@
 import React, { Component } from "react";
 import axios from "axios";
 import { Route, withRouter } from "react-router-dom";
-import Header from './components/Habit';
+import Header from "./components/Header";
 import CredentialsView from "./views/CredentialsView";
 import HomeView from "./views/HomeView";
+import Footer from "./components/Footer";
 import "./App.css";
 
 class App extends Component {
@@ -32,24 +33,26 @@ class App extends Component {
       });
   };
 
-
   render() {
     return (
       <div className="App">
-        {/* <Route path="/home" component={Header} /> */}
-        <Route
-          exact
-          path="/"
-          render={props => (
-            <CredentialsView
-              {...props}
-              registerUser={this.registerUser}
-              loginUser={this.loginUser}
-            />
-          )}
-        />
+        <Route path="/" component={Header} />
+        <div className="main">
+          <Route
+            exact
+            path="/"
+            render={props => (
+              <CredentialsView
+                {...props}
+                registerUser={this.registerUser}
+                loginUser={this.loginUser}
+              />
+            )}
+          />
 
-        <Route path="/home" render={props => <HomeView {...props} />} />
+          <Route path="/home" render={props => <HomeView {...props} />} />
+        </div>
+        <Route path="/" component={Footer} />
       </div>
     );
   }

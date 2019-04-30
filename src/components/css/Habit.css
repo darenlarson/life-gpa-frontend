@@ -1,0 +1,32 @@
+.habit-wrapper {
+  background-color: black;
+  margin: 5px 0;
+  padding: 10px 2px;
+}
+
+.habit-ctn {
+  display: flex;
+}
+
+.habit-ctn button {
+  background: inherit;
+  color: white;
+  border: 1px solid white;
+}
+
+.habit-ctn button:hover {
+  background: #D87B92;
+  color: black;
+  border-color: #D87B92;
+}
+
+.habit-ctn .name {
+  width: 300px;
+  margin: 0 5px;
+  color: #D87B92;
+}
+
+.habit-ctn .GPA {
+  margin: 0 5px;
+  color: #D87B92;
+}

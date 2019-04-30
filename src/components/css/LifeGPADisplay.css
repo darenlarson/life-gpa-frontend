@@ -1,0 +1,16 @@
+.lifeGPA-wrapper {
+  /* border: 1px solid red; */
+  display: flex;
+  justify-content: center;
+}
+
+.lifeGPA-ctn {
+  background-color: black;
+  padding: 60px 30px;
+  border-radius: 50%;
+}
+
+.lifeGPA-ctn h3 {
+  font-size: 5rem;
+  color: #D87B92;
+}
