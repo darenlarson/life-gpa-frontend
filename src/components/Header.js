@@ -3,7 +3,7 @@ import './css/Header.css';
 
 const Header = () => {
   return (
-    <header>
+    <header className="header-wrapper">
       <div className="header-ctn">
         <div className="logo">
           <h2>LifeGPA</h2>

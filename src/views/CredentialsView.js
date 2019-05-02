@@ -5,7 +5,9 @@ import "./css/CredentialsView.css";
 
 class CredentialsView extends React.Component {
   state = {
-    login: true
+    login: true,
+    loginSelected: true,
+    registerSelected: false,
   };
 
   showLogin = () => {
@@ -21,8 +23,8 @@ class CredentialsView extends React.Component {
       <div className="credentials">
         <div className="login-box">
           <header>
-            <div className="header-btn" onClick={this.showLogin}>Login</div>
-            <div className="header-btn" onClick={this.showRegister}>Register</div>
+            <div className={`header-btn ${this.state.login ? "selected": null}`} onClick={this.showLogin}>Login</div>
+            <div className={`header-btn ${this.state.login === false ? "selected": null}`} onClick={this.showRegister}>Register</div>
           </header>
 
           <div className="form-container">

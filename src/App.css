@@ -1,5 +1,11 @@
+.App {
+  background-color: #20252B;
+  /* background-color: black; */
+  min-height: 100vh;
+}
+
 .main {
   margin: 0 auto;
   max-width: 1000px;
-  border: 1px solid red;
+  /* border: 1px solid red; */
 }
