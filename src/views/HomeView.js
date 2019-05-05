@@ -1,11 +1,12 @@
 import React from "react";
 import { Route } from "react-router-dom";
 import LifeGPADisplay from "../components/LifeGPADisplay";
-// import AddHabit from "../components/AddHabit";
 import HabitsList from "../components/HabitsList";
 import ManageHabits from "../components/ManageHabits";
 import axios from "axios";
 import "./css/HomeView.css";
+
+// https://life-gpa.herokuapp.com/
 
 class HomeView extends React.Component {
   constructor(props) {
@@ -28,7 +29,8 @@ class HomeView extends React.Component {
     const userId = localStorage.getItem("id");
 
     axios
-      .get(`http://localhost:5000/api/habits/${userId}/user-habits`)
+      // .get(`http://localhost:5000/api/habits/${userId}/user-habits`)
+      .get(`https://life-gpa.herokuapp.com/api/habits/${userId}/user-habits`)
       .then(res => {
         // console.log(res.data);
         this.setState({ habits: res.data });
@@ -43,7 +45,8 @@ class HomeView extends React.Component {
     const userId = localStorage.getItem("id");
 
     axios
-      .get(`http://localhost:5000/api/habits/${userId}/habit-records`)
+      // .get(`http://localhost:5000/api/habits/${userId}/habit-records`)
+      .get(`https://life-gpa.herokuapp.com/api/habits/${userId}/habit-records`)
       .then(res => {
         // console.log(res.data);
         this.setState({ habitRecords: res.data });
@@ -173,7 +176,8 @@ class HomeView extends React.Component {
     };
 
     axios
-      .post(`http://localhost:5000/api/habits/${userId}/user-habits`, habitInfo)
+      // .post(`http://localhost:5000/api/habits/${userId}/user-habits`, habitInfo)
+      .post(`https://life-gpa.herokuapp.com/api/habits/${userId}/user-habits`, habitInfo)
       .then(res => {
         console.log(res.data);
         this.getHabits();
@@ -197,7 +201,8 @@ class HomeView extends React.Component {
     };
 
     axios
-      .post(`http://localhost:5000/api/habits/complete-habit`, habitInfo)
+      // .post(`http://localhost:5000/api/habits/complete-habit`, habitInfo)
+      .post(`https://life-gpa.herokuapp.com/api/habits/complete-habit`, habitInfo)
       .then(res => {
         console.log(res.data);
         this.getHabits();
@@ -219,7 +224,8 @@ class HomeView extends React.Component {
       id: habit.id
     }
     axios
-      .put(`http://localhost:5000/api/habits/reset-habit`, updatedInfo)
+      // .put(`http://localhost:5000/api/habits/reset-habit`, updatedInfo)
+      .put(`https://life-gpa.herokuapp.com/api/habits/reset-habit`, updatedInfo)
       .then(res => {
         console.log(res.data);
         this.getHabits();
@@ -234,7 +240,8 @@ class HomeView extends React.Component {
     console.log(habit);
 
     axios
-      .delete(`http://localhost:5000/api/habits/${habit.id}`)
+      // .delete(`http://localhost:5000/api/habits/${habit.id}`)
+      .delete(`https://life-gpa.herokuapp.com/api/habits/${habit.id}`)
       .then(res => {
         console.log(res.data);
         this.getHabits();

@@ -8,10 +8,13 @@ import Footer from "./components/Footer";
 import "./App.css";
 import MobileFooter from "./components/MobileFooter";
 
+// https://life-gpa.herokuapp.com/
+
 class App extends Component {
   registerUser = userInfo => {
     axios
-      .post(`http://localhost:5000/api/users/register`, userInfo)
+      // .post(`http://localhost:5000/api/users/register`, userInfo)
+      .post(`https://life-gpa.herokuapp.com//api/users/register`, userInfo)
       .then(res => {
         console.log(res.data);
         this.loginUser(userInfo);
@@ -23,7 +26,8 @@ class App extends Component {
 
   loginUser = userInfo => {
     axios
-      .post(`http://localhost:5000/api/users/login`, userInfo)
+      // .post(`http://localhost:5000/api/users/login`, userInfo)
+      .post(`https://life-gpa.herokuapp.com/api/users/login`, userInfo)
       .then(res => {
         console.log(res.data);
         localStorage.setItem("id", res.data.id);
@@ -71,7 +75,7 @@ class App extends Component {
           <Route path="/home" render={props => <HomeView {...props} />} />
         </div>
         <Route path="/" component={Footer} />
-        <Route path="/" component={MobileFooter} />
+        <Route path="/home" component={MobileFooter} />
       </div>
     );
   }
