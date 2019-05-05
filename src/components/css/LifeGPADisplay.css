@@ -2,15 +2,43 @@
   /* border: 1px solid red; */
   display: flex;
   justify-content: center;
+  margin: 60px 0;
 }
 
 .lifeGPA-ctn {
-  background-color: black;
-  padding: 60px 30px;
-  border-radius: 50%;
+  /* background-color: black; */
+  /* padding: 60px 30px; */
+  /* border-radius: 50%; */
 }
 
-.lifeGPA-ctn h3 {
+.lifeGPA-ctn h1 {
   font-size: 5rem;
-  color: #D87B92;
+  /* color: #D87B92; */
+  color: white;
+}
+
+.lifeGPA-ctn span {
+  color: white;
+  color: black;
+  /* color: #D87B92; */
+  background-color: #D87B92;
+  border: 1px solid black;
+  border-radius: 10%;
+  padding: 3px;
+}
+
+@media (max-width: 550px) {
+  .lifeGPA-wrapper {
+    margin: 30px 0;
+  }
+
+  .lifeGPA-ctn {
+    align-items: center;
+  }
+
+  .lifeGPA-ctn span {
+    display: block;
+    width: 100px;
+    margin: 20px auto;
+  }
 }

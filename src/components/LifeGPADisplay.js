@@ -5,7 +5,7 @@ const LifeGPADisplay = props => {
   return (
     <div className="lifeGPA-wrapper">
       <div className="lifeGPA-ctn">
-        <h3>{Math.round(props.lifeGPA * 100)}%</h3>
+        <h1>Your LifeGPA is <span>{Math.round(props.lifeGPA * 100)}%</span></h1>
       </div>
     </div>
   );

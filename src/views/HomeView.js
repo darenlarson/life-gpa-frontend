@@ -1,8 +1,11 @@
 import React from "react";
+import { Route } from "react-router-dom";
 import LifeGPADisplay from "../components/LifeGPADisplay";
-import AddHabit from "../components/AddHabit";
+// import AddHabit from "../components/AddHabit";
 import HabitsList from "../components/HabitsList";
+import ManageHabits from "../components/ManageHabits";
 import axios from "axios";
+import "./css/HomeView.css";
 
 class HomeView extends React.Component {
   constructor(props) {
@@ -13,7 +16,7 @@ class HomeView extends React.Component {
       fullHabitInfo: [],
       finalHabitsArray: [],
       lifeGPA: [],
-      totalLifeGPA: 0,
+      totalLifeGPA: 0
     };
   }
 
@@ -63,7 +66,7 @@ class HomeView extends React.Component {
 
       return newHabit;
     });
-    console.log(newHabitArray);
+    // console.log(newHabitArray);
     this.setState({ fullHabitInfo: newHabitArray });
   };
 
@@ -86,8 +89,9 @@ class HomeView extends React.Component {
       let ninetyCount = 0;
 
       // # of days that have passed since current habit iteration was created.
-      const daysSinceCreated = (today - new Date(habit.date_created)) / (1000 * 60 * 60 * 24) + 1;
-      console.log("Days Since Created:", daysSinceCreated);
+      const daysSinceCreated =
+        (today - new Date(habit.date_created)) / (1000 * 60 * 60 * 24) + 1;
+      // console.log("Days Since Created:", daysSinceCreated);
 
       // Loop over every record in the database for each habit.
       habit.records.forEach(rec => {
@@ -127,21 +131,25 @@ class HomeView extends React.Component {
         ninetyGPA = ninetyCount / 30;
       }
 
-      let updatedHabit = { ...habit, thirtyGPA: thirtyGPA, sixtyGPA: sixtyGPA, ninetyGPA: ninetyGPA };
+      let updatedHabit = {
+        ...habit,
+        thirtyGPA: thirtyGPA,
+        sixtyGPA: sixtyGPA,
+        ninetyGPA: ninetyGPA
+      };
 
       return updatedHabit;
     });
 
     this.setState({ finalHabitsArray: finalHabitsArray });
-    
   };
 
   totalLifeGPA = () => {
     const GPA = this.state.finalHabitsArray.map(habit => {
-      return habit.thirtyGPA
+      return habit.thirtyGPA;
     });
 
-    this.setState({ lifeGPA: GPA })
+    this.setState({ lifeGPA: GPA });
 
     let sumGPA = 0;
     for (let i = 0; i < GPA.length; i++) {
@@ -150,8 +158,8 @@ class HomeView extends React.Component {
 
     const totalLifeGPA = sumGPA / GPA.length;
 
-    this.setState({ totalLifeGPA: totalLifeGPA})
-  }
+    this.setState({ totalLifeGPA: totalLifeGPA });
+  };
 
   addHabit = habitName => {
     const userId = localStorage.getItem("id");
@@ -178,28 +186,15 @@ class HomeView extends React.Component {
   completeHabit = habit => {
     const today = new Date();
     today.setHours(0, 0, 0, 0);
-    console.log("today:", today);
 
     const yesterday = new Date(today - 1000 * 60 * 60 * 24);
     yesterday.setHours(0, 0, 0, 0);
-    console.log("yesterday:", yesterday);
-    // console.log("last_completed", last_completed);
-
-    // const habitInfo = {
-    //   habit_id: id,
-    //   user_id: userId,
-    //   habit_name: habitName,
-    //   last_completed: last_completed,
-    //   today,
-    // };
 
     const habitInfo = {
       ...habit,
       today,
       yesterday
     };
-
-    console.log(habitInfo);
 
     axios
       .post(`http://localhost:5000/api/habits/complete-habit`, habitInfo)
@@ -212,14 +207,77 @@ class HomeView extends React.Component {
       });
   };
 
+  resetData = habit => {
+    console.log("resetData() invoked");
+    console.log(habit);
+
+    const today = new Date();
+    today.setHours(0, 0, 0, 0);
+
+    const updatedInfo = {
+      date_created: today,
+      id: habit.id
+    }
+    axios
+      .put(`http://localhost:5000/api/habits/reset-habit`, updatedInfo)
+      .then(res => {
+        console.log(res.data);
+        this.getHabits();
+      })
+      .catch(err => {
+        console.log(err);
+      });
+  };
+
+  deleteHabit = habit => {
+    console.log("deleteHabit() invoked");
+    console.log(habit);
+
+    axios
+      .delete(`http://localhost:5000/api/habits/${habit.id}`)
+      .then(res => {
+        console.log(res.data);
+        this.getHabits();
+      })
+      .catch(err => {
+        console.log(err);
+        this.getHabits();
+      });
+  }
+
   render() {
     return (
-      <div>
+      <div className="homeview-wrapper">
         <LifeGPADisplay lifeGPA={this.state.totalLifeGPA} />
         {/* <AddHabit addHabit={this.addHabit} /> */}
-        <HabitsList
+        {/* <HabitsList
           habits={this.state.finalHabitsArray}
           completeHabit={this.completeHabit}
+        /> */}
+
+        <Route
+          exact
+          path="/home"
+          render={props => (
+            <HabitsList
+              {...props}
+              habits={this.state.finalHabitsArray}
+              completeHabit={this.completeHabit}
+            />
+          )}
+        />
+
+        <Route
+          path="/home/manage-habits"
+          render={props => (
+            <ManageHabits
+              {...props}
+              habits={this.state.finalHabitsArray}
+              resetData={this.resetData}
+              deleteHabit={this.deleteHabit}
+              addHabit={this.addHabit}
+            />
+          )}
         />
       </div>
     );

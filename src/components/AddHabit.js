@@ -1,4 +1,5 @@
 import React from "react";
+import './css/AddHabit.css';
 
 class AddHabit extends React.Component {
   constructor(props) {
@@ -20,17 +21,17 @@ class AddHabit extends React.Component {
 
   render() {
     return (
-      <div>
-        <form className="login-form" onSubmit={this.handleSubmit}>
+      <div className="add-habit-wrapper">
+        <form className="habit-form" onSubmit={this.handleSubmit}>
           <input
             required
             type="text"
             name="habit"
             onChange={this.handleChange}
             value={this.state.habit}
-            placeholder="Habit"
+            placeholder="Enter a new habit"
           />
-          <button type="submit">Add</button>
+          <button type="submit">ADD</button>
         </form>
       </div>
     );

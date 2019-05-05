@@ -1,0 +1,10 @@
+.homeview-wrapper {
+  width: 600px;
+  /* border: 1px solid green; */
+}
+
+@media (max-width: 550px) {
+  .homeview-wrapper {
+    margin: 0 5px;
+  }
+}

@@ -14,3 +14,9 @@
   color: #D87B92;
   font-size: 1.6rem;
 }
+
+@media (max-width: 550px) {
+  .footer-wrapper {
+    display: none;
+  }
+}

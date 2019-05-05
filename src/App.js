@@ -6,6 +6,7 @@ import CredentialsView from "./views/CredentialsView";
 import HomeView from "./views/HomeView";
 import Footer from "./components/Footer";
 import "./App.css";
+import MobileFooter from "./components/MobileFooter";
 
 class App extends Component {
   registerUser = userInfo => {
@@ -33,10 +34,27 @@ class App extends Component {
       });
   };
 
+  logoutUser = e => {
+    e.preventDefault();
+
+    localStorage.removeItem("id");
+
+    this.props.history.push("/");
+  };
+
   render() {
     return (
       <div className="App">
-        <Route path="/" component={Header} />
+        <Route
+          path="/"
+          render={props => (
+            <Header
+              {...props}
+              logoutUser={this.logoutUser}
+            />
+          )}
+        />
+
         <div className="main">
           <Route
             exact
@@ -53,6 +71,7 @@ class App extends Component {
           <Route path="/home" render={props => <HomeView {...props} />} />
         </div>
         <Route path="/" component={Footer} />
+        <Route path="/" component={MobileFooter} />
       </div>
     );
   }

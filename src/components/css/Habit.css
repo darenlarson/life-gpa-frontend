@@ -1,18 +1,40 @@
 .habit-wrapper {
-  background-color: black;
-  margin: 5px 0;
+  /* background-color: black; */
+  margin: 10px 0;
   padding: 10px 2px;
-}
-
-.habit-ctn {
-  /* display: flex; */
-}
-
-.primary-info {
+  border-radius: 10px;
   display: flex;
+  /* justify-content: center; */
+  align-items: center;
+  width: 100%;
+  /* border: 1px solid red; */
 }
 
-.habit-ctn button {
+.habit-wrapper .btn-ctn {
+  height: 100%;
+  display: flex;
+  align-items: center;
+  margin-right: 20px;
+}
+
+.status-btn {
+  border-radius: 5px;
+  margin-left: 20px;
+  height: 20px;
+  font-size: 1.8rem;
+  height: 100%;
+}
+
+.status-btn:focus {
+  outline: 0;
+}
+
+.completed {
+  background: #D87B92;
+  border-color: #D87B92;
+}
+
+.noncompleted {
   background: inherit;
   color: white;
   border: 1px solid white;
@@ -24,14 +46,45 @@
   border-color: #D87B92;
 }
 
+.habit-ctn {
+  /* display: flex; */
+  background-color: black;
+  border-radius: 5px;
+  overflow: scroll;
+  width: 100%;
+}
+
+.habit-wrapper .primary-info {
+  display: flex;
+  justify-content: space-between;
+  height: 40px;
+  align-items: center;
+  /* width: 400px; */
+  width: 100%;
+}
+
 .habit-ctn .name {
-  width: 300px;
-  margin: 0 5px;
+  /* width: 400px; */
+  margin: 0 0 0 10px;
   color: #D87B92;
+  font-size: 2rem;
+}
+
+.habit-ctn .stats-btn {
+  color: #D87B92;
+  font-size: 1.4rem;
+  margin-right: 10px;
+  font-style: italic;
+}
+
+.habit-ctn .stats-btn:hover {
+  cursor: pointer;
+  text-decoration: underline;
 }
 
 .more-info {
   display: flex;
+  flex-direction: row;
 }
 
 .habit-ctn .GPA {
@@ -40,9 +93,19 @@
 }
 
 .visible {
-  display: block;
+  display: flex;
 }
 
 .hidden {
   display: none;
+}
+
+@media (max-width: 550px) {
+  .habit-wrapper .btn-ctn {
+    margin-right: 5px;
+}
+
+  .status-btn {
+    margin-left: 0;
+  }
 }

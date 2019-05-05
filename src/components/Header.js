@@ -1,20 +1,20 @@
 import React from 'react';
+import { NavLink } from "react-router-dom";
 import './css/Header.css';
 
-const Header = () => {
+const Header = props => {
   return (
     <header className="header-wrapper">
       <div className="header-ctn">
-        <div className="logo">
-          <h2>LifeGPA</h2>
+        <div className="logo-wrapper">
+          <NavLink to="/home" className="logo"><h2>LifeGPA</h2></NavLink>
         </div>
 
         <nav>
           <div>
-            <button>MANAGE HABITS</button>
-            <button>STATISTICS</button>
-            <button>SETTINGS</button>
-            <button>LOGOUT</button>
+            <NavLink to="/home" className={`nav-btn hide ${props.history.location.pathname === "/home" && "selected"}`}>HOME</NavLink>
+            <NavLink to="/home/manage-habits" className={`nav-btn hide ${props.history.location.pathname === "/home/manage-habits" && "selected"}`}>MANAGE HABITS</NavLink>
+            <button className="nav-btn" onClick={(event) => props.logoutUser(event)}>LOGOUT</button>
           </div>
         </nav>
       </div>
