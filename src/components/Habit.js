@@ -28,13 +28,13 @@ class Habit extends React.Component {
 
           <div className="primary-info">
             <p className="name">{this.props.habit.habit_name} {lastCompleted - today === 0 && <span>&#10004;</span>}</p>
-            <p className="stats-btn" onClick={this.toggleVisibility}>stats...</p>
+            <p className="stats-btn noselect" onClick={this.toggleVisibility}>stats...</p>
           </div>
 
           <div className={`more-info ${this.state.show ? "visible" : "hidden"}`} >
-            <p className="GPA">30GPA: {Math.round(this.props.habit.thirtyGPA * 100)}%</p>
-            <p className="GPA">60GPA: {Math.round(this.props.habit.sixtyGPA * 100)}%</p>
-            <p className="GPA">90GPA: {Math.round(this.props.habit.ninetyGPA * 100)}%</p>
+            <p className="GPA"><span className="gpa-label">30gpa:</span> {Math.round(this.props.habit.thirtyGPA * 100)}%</p>
+            <p className="GPA"><span className="gpa-label">60GPA:</span> {Math.round(this.props.habit.sixtyGPA * 100)}%</p>
+            <p className="GPA"><span className="gpa-label">90GPA:</span> {Math.round(this.props.habit.ninetyGPA * 100)}%</p>
           </div>
 
         </div>

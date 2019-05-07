@@ -7,7 +7,9 @@
   /* justify-content: center; */
   align-items: center;
   width: 100%;
+  /* height: 50px; */
   /* border: 1px solid red; */
+  white-space: nowrap;
 }
 
 .habit-wrapper .btn-ctn {
@@ -64,10 +66,11 @@
 }
 
 .habit-ctn .name {
-  /* width: 400px; */
+  width: 400px;
   margin: 0 0 0 10px;
   color: #D87B92;
   font-size: 2rem;
+  overflow: hidden;
 }
 
 .habit-ctn .stats-btn {
@@ -90,6 +93,12 @@
 .habit-ctn .GPA {
   margin: 0 5px;
   color: #D87B92;
+  font-weight: bold;
+}
+
+.gpa-label {
+  color: white;
+  font-weight: normal;
 }
 
 .visible {
@@ -98,6 +107,16 @@
 
 .hidden {
   display: none;
+}
+
+.noselect {
+  -webkit-touch-callout: none; /* iOS Safari */
+    -webkit-user-select: none; /* Safari */
+     -khtml-user-select: none; /* Konqueror HTML */
+       -moz-user-select: none; /* Firefox */
+        -ms-user-select: none; /* Internet Explorer/Edge */
+            user-select: none; /* Non-prefixed version, currently
+                                  supported by Chrome and Opera */
 }
 
 @media (max-width: 550px) {
