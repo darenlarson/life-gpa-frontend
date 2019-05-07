@@ -1,5 +1,6 @@
 # LifeGPA
 Front-end deployed here: https://life-gpa.netlify.com/home
+
 Back-end deployer here: https://life-gpa.herokuapp.com/
 
 LifeGPA was built by myself.
