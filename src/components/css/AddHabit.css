@@ -13,7 +13,7 @@
 }
 
 .habit-form input {
-  width: 80%;
+  width: 79%;
   font-size: 1.8rem;
   border-radius: 5px;
   border: none;
@@ -28,6 +28,7 @@
   width: 100px;
   font-size: 1.6rem;
   font-weight: bold;
+  width: 19%;
 }
 
 .habit-form button:hover {

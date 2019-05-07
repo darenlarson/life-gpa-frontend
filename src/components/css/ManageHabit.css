@@ -69,3 +69,10 @@
 .manage-btn:focus {
   outline: 0;
 }
+
+
+@media (max-width: 550px) {
+  .manage-habit-ctn .name {
+    width: 400px;
+  }
+}
