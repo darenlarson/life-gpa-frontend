@@ -1,6 +1,8 @@
 .header-wrapper {
   background-color: black;
   padding: 10px 0;
+  position: sticky;
+  top: 0;
 }
 
 .header-ctn {

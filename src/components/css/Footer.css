@@ -1,8 +1,9 @@
 .footer-wrapper {
   background-color: black;
   padding: 10px 0;
-  position: absolute;
   width: 100%;
+  /* position: absolute; */
+  position: fixed;
   bottom: 0;
 }
 
