@@ -27,10 +27,17 @@ class HomeView extends React.Component {
 
   getHabits = () => {
     const userId = localStorage.getItem("id");
+    const token = localStorage.getItem("token");
+
+    const requestOptions = {
+      headers: {
+        authorization: token
+      }
+    };
 
     axios
-      // .get(`http://localhost:5000/api/habits/${userId}/user-habits`)
-      .get(`https://life-gpa.herokuapp.com/api/habits/${userId}/user-habits`)
+      .get(`http://localhost:5000/api/habits/${userId}/user-habits`, requestOptions)
+      // .get(`https://life-gpa.herokuapp.com/api/habits/${userId}/user-habits`, requestOptions)
       .then(res => {
         // console.log(res.data);
         this.setState({ habits: res.data });
@@ -43,10 +50,17 @@ class HomeView extends React.Component {
 
   getHabitRecords = () => {
     const userId = localStorage.getItem("id");
+    const token = localStorage.getItem("token");
+
+    const requestOptions = {
+      headers: {
+        authorization: token
+      }
+    };
 
     axios
-      // .get(`http://localhost:5000/api/habits/${userId}/habit-records`)
-      .get(`https://life-gpa.herokuapp.com/api/habits/${userId}/habit-records`)
+      .get(`http://localhost:5000/api/habits/${userId}/habit-records`, requestOptions)
+      // .get(`https://life-gpa.herokuapp.com/api/habits/${userId}/habit-records`, requestOptions)
       .then(res => {
         // console.log(res.data);
         this.setState({ habitRecords: res.data });
@@ -166,6 +180,13 @@ class HomeView extends React.Component {
 
   addHabit = habitName => {
     const userId = localStorage.getItem("id");
+    const token = localStorage.getItem("token");
+
+    const requestOptions = {
+      headers: {
+        authorization: token
+      }
+    };
 
     const today = new Date();
     today.setHours(0, 0, 0, 0);
@@ -176,8 +197,8 @@ class HomeView extends React.Component {
     };
 
     axios
-      // .post(`http://localhost:5000/api/habits/${userId}/user-habits`, habitInfo)
-      .post(`https://life-gpa.herokuapp.com/api/habits/${userId}/user-habits`, habitInfo)
+      .post(`http://localhost:5000/api/habits/${userId}/user-habits`, habitInfo, requestOptions)
+      // .post(`https://life-gpa.herokuapp.com/api/habits/${userId}/user-habits`, habitInfo, requestOptions)
       .then(res => {
         console.log(res.data);
         this.getHabits();
@@ -200,9 +221,17 @@ class HomeView extends React.Component {
       yesterday
     };
 
+    const token = localStorage.getItem("token");
+
+    const requestOptions = {
+      headers: {
+        authorization: token
+      }
+    };
+
     axios
-      // .post(`http://localhost:5000/api/habits/complete-habit`, habitInfo)
-      .post(`https://life-gpa.herokuapp.com/api/habits/complete-habit`, habitInfo)
+      .post(`http://localhost:5000/api/habits/complete-habit`, habitInfo, requestOptions)
+      // .post(`https://life-gpa.herokuapp.com/api/habits/complete-habit`, habitInfo, requestOptions)
       .then(res => {
         console.log(res.data);
         this.getHabits();
@@ -223,9 +252,18 @@ class HomeView extends React.Component {
       date_created: today,
       id: habit.id
     }
+
+    const token = localStorage.getItem("token");
+
+    const requestOptions = {
+      headers: {
+        authorization: token
+      }
+    };
+
     axios
-      // .put(`http://localhost:5000/api/habits/reset-habit`, updatedInfo)
-      .put(`https://life-gpa.herokuapp.com/api/habits/reset-habit`, updatedInfo)
+      .put(`http://localhost:5000/api/habits/reset-habit`, updatedInfo, requestOptions)
+      // .put(`https://life-gpa.herokuapp.com/api/habits/reset-habit`, updatedInfo, requestOptions)
       .then(res => {
         console.log(res.data);
         this.getHabits();
@@ -239,9 +277,17 @@ class HomeView extends React.Component {
     console.log("deleteHabit() invoked");
     console.log(habit);
 
+    const token = localStorage.getItem("token");
+
+    const requestOptions = {
+      headers: {
+        authorization: token
+      }
+    };
+
     axios
-      // .delete(`http://localhost:5000/api/habits/${habit.id}`)
-      .delete(`https://life-gpa.herokuapp.com/api/habits/${habit.id}`)
+      .delete(`http://localhost:5000/api/habits/${habit.id}`, requestOptions)
+      // .delete(`https://life-gpa.herokuapp.com/api/habits/${habit.id}`, requestOptions)
       .then(res => {
         console.log(res.data);
         this.getHabits();

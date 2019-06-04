@@ -13,8 +13,8 @@ import MobileFooter from "./components/MobileFooter";
 class App extends Component {
   registerUser = userInfo => {
     axios
-      // .post(`http://localhost:5000/api/users/register`, userInfo)
-      .post(`https://life-gpa.herokuapp.com//api/users/register`, userInfo)
+      .post(`http://localhost:5000/api/users/register`, userInfo)
+      // .post(`https://life-gpa.herokuapp.com//api/users/register`, userInfo)
       .then(res => {
         console.log(res.data);
         this.loginUser(userInfo);
@@ -26,11 +26,12 @@ class App extends Component {
 
   loginUser = userInfo => {
     axios
-      // .post(`http://localhost:5000/api/users/login`, userInfo)
-      .post(`https://life-gpa.herokuapp.com/api/users/login`, userInfo)
+      .post(`http://localhost:5000/api/users/login`, userInfo)
+      // .post(`https://life-gpa.herokuapp.com/api/users/login`, userInfo)
       .then(res => {
         console.log(res.data);
         localStorage.setItem("id", res.data.id);
+        localStorage.setItem("token", res.data.token);
         this.props.history.push("/home");
       })
       .catch(err => {
@@ -42,6 +43,7 @@ class App extends Component {
     e.preventDefault();
 
     localStorage.removeItem("id");
+    localStorage.removeItem("token");
 
     this.props.history.push("/");
   };
