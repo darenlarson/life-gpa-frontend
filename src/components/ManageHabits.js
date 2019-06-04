@@ -1,6 +1,6 @@
 import React from "react";
 import ManageHabit from "./ManageHabit";
-import AddHabit from './AddHabit';
+import AddHabit from "./AddHabit";
 import "./css/ManageHabits.css";
 
 const ManageHabits = props => {

@@ -1,5 +1,5 @@
 import React from "react";
-import './css/ManageHabit.css';
+import "./css/ManageHabit.css";
 
 const ManageHabit = props => {
   return (
@@ -15,8 +15,18 @@ const ManageHabit = props => {
         </div>
         <div className="manage-options">
           <button className="manage-btn">ARCHIVE</button>
-          <button className="manage-btn" onClick={() => props.resetData(props.habit)}>RESET</button>
-          <button className="manage-btn" onClick={() => props.deleteHabit(props.habit)}>DELETE</button>
+          <button
+            className="manage-btn"
+            onClick={() => props.resetData(props.habit)}
+          >
+            RESET
+          </button>
+          <button
+            className="manage-btn"
+            onClick={() => props.deleteHabit(props.habit)}
+          >
+            DELETE
+          </button>
         </div>
       </div>
     </div>
