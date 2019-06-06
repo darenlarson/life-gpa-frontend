@@ -1,0 +1,9 @@
+.complete {
+  display: flex;
+  justify-content: center;
+  color: white;
+}
+
+.incomplete {
+  visibility: hidden;
+}

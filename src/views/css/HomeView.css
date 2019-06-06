@@ -1,11 +1,35 @@
 .homeview-wrapper {
   width: 600px;
   margin-bottom: 100px;
-  /* border: 1px solid green; */
+  position: relative;
+}
+
+.show-description {
+  position: absolute;
+  top: 130px;
+  left: 100px;
+  z-index: 2;
+  background: black;
+  color: white;
+  width: 400px;
+  padding: 20px;
+  text-align: center;
+  border: 1px solid #D87B92;
+  line-height: 1.4;
+}
+
+.hide-description {
+  display: none;
 }
 
 @media (max-width: 550px) {
   .homeview-wrapper {
     margin: 0 5px;
+  }
+
+  .show-description {
+    top: 175px;
+    left: 100px;
+    width: 300px;
   }
 }

@@ -29,7 +29,7 @@ class App extends Component {
       .post(`http://localhost:5000/api/users/login`, userInfo)
       // .post(`https://life-gpa.herokuapp.com/api/users/login`, userInfo)
       .then(res => {
-        console.log(res.data);
+        // console.log(res.data);
         localStorage.setItem("id", res.data.id);
         localStorage.setItem("token", res.data.token);
         this.props.history.push("/home");
