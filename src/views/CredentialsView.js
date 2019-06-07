@@ -5,15 +5,16 @@ import "./css/CredentialsView.css";
 
 class CredentialsView extends React.Component {
   state = {
+    // login shown when true, register shown when false
     login: true,
-    loginSelected: true,
-    registerSelected: false,
   };
 
+  // Toggles the login component
   showLogin = () => {
     this.setState({ login: true });
   };
 
+  // Toggles the register component
   showRegister = () => {
     this.setState({ login: false });
   };

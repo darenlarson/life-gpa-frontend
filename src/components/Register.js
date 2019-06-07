@@ -12,12 +12,15 @@ class Register extends React.Component {
     };
   }
 
+  // Handler to save form input to state
   handleChange = event => {
     this.setState({ [event.target.name]: event.target.value });
   };
 
+  // Submits form data and invokes registerUser()
   handleSubmit = e => {
     e.preventDefault();
+    // Sends registration information to server
     this.props.registerUser(this.state);
   };
 

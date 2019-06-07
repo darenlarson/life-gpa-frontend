@@ -9,13 +9,17 @@ class AddHabit extends React.Component {
     };
   }
 
+  // Handler for setting characters entered in form to state
   handleChange = event => {
     this.setState({ [event.target.name]: event.target.value });
   };
 
+  // Submits the habit entered, invokes addHabit(), which sends habit to server
   handleSubmit = e => {
     e.preventDefault();
+    // addHabit() sends the new habit to the server
     this.props.addHabit(this.state.habit);
+    // Resets the add habit form to blank
     this.setState({ habit: '' });
   };
 

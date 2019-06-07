@@ -19,25 +19,29 @@ class HomeView extends React.Component {
     };
   }
 
+  // Fetch habit data as soon as component mounts
   componentDidMount() {
     this.getHabits();
   }
 
+  // builders the headers since they're all the same
+  buildHeader = () => {
+    const token = localStorage.getItem("token");
+    const headers = { headers: { authorization: token } }
+    return headers;
+  }
+
+  // Gets all habits with this user id
   getHabits = () => {
     const userId = localStorage.getItem("id");
-    const token = localStorage.getItem("token");
 
-    const requestOptions = {
-      headers: {
-        authorization: token
-      }
-    };
+    // Generates header with authorization: token
+    const headers = this.buildHeader();
 
     axios
-      .get(`http://localhost:5000/api/habits/${userId}/user-habits`, requestOptions)
-      // .get(`https://life-gpa.herokuapp.com/api/habits/${userId}/user-habits`, requestOptions)
+      .get(`http://localhost:5000/api/habits/${userId}/user-habits`, headers)
+      // .get(`https://life-gpa.herokuapp.com/api/habits/${userId}/user-habits`, headers)
       .then(res => {
-        console.log(res.data);
         this.setState({
           habits: res.data.habits,
           habitRecords: res.data.habitRecords,
@@ -50,15 +54,11 @@ class HomeView extends React.Component {
       });
   };
 
+  // Adds a new habit
   addHabit = habitName => {
     const userId = localStorage.getItem("id");
-    const token = localStorage.getItem("token");
-
-    const requestOptions = {
-      headers: {
-        authorization: token
-      }
-    };
+    
+    const headers = this.buildHeader();
 
     const today = new Date();
     today.setHours(0, 0, 0, 0);
@@ -69,8 +69,8 @@ class HomeView extends React.Component {
     };
 
     axios
-      .post(`http://localhost:5000/api/habits/${userId}/user-habits`, habitInfo, requestOptions)
-      // .post(`https://life-gpa.herokuapp.com/api/habits/${userId}/user-habits`, habitInfo, requestOptions)
+      .post(`http://localhost:5000/api/habits/${userId}/user-habits`, habitInfo, headers)
+      // .post(`https://life-gpa.herokuapp.com/api/habits/${userId}/user-habits`, habitInfo, headers)
       .then(res => {
         console.log(res.data);
         this.getHabits();
@@ -80,6 +80,7 @@ class HomeView extends React.Component {
       });
   };
 
+  // Completes a habit, will add a habit completion record to database, or remove it if habit already completed today
   completeHabit = habit => {
     const today = new Date();
     today.setHours(0, 0, 0, 0);
@@ -93,17 +94,11 @@ class HomeView extends React.Component {
       yesterday
     };
 
-    const token = localStorage.getItem("token");
-
-    const requestOptions = {
-      headers: {
-        authorization: token
-      }
-    };
+    const headers = this.buildHeader();
 
     axios
-      .post(`http://localhost:5000/api/habits/complete-habit`, habitInfo, requestOptions)
-      // .post(`https://life-gpa.herokuapp.com/api/habits/complete-habit`, habitInfo, requestOptions)
+      .post(`http://localhost:5000/api/habits/complete-habit`, habitInfo, headers)
+      // .post(`https://life-gpa.herokuapp.com/api/habits/complete-habit`, habitInfo, headers)
       .then(res => {
         // console.log(res.data);
         this.getHabits();
@@ -113,31 +108,19 @@ class HomeView extends React.Component {
       });
   };
 
+  // Deletes habit completion records and resets start date to today
   resetData = habit => {
-    console.log("resetData() invoked");
-    console.log(habit);
-
     const today = new Date();
     today.setHours(0, 0, 0, 0);
 
-    const updatedInfo = {
-      date_created: today,
-      id: habit.id
-    }
+    const id = habit.id
 
-    const token = localStorage.getItem("token");
-
-    const requestOptions = {
-      headers: {
-        authorization: token
-      }
-    };
+    const headers = this.buildHeader();
 
     axios
-      .put(`http://localhost:5000/api/habits/reset-habit`, updatedInfo, requestOptions)
-      // .put(`https://life-gpa.herokuapp.com/api/habits/reset-habit`, updatedInfo, requestOptions)
+      .put(`http://localhost:5000/api/habits/reset-habit`, id, headers)
+      // .put(`https://life-gpa.herokuapp.com/api/habits/reset-habit`, id, headers)
       .then(res => {
-        console.log(res.data);
         this.getHabits();
       })
       .catch(err => {
@@ -145,23 +128,14 @@ class HomeView extends React.Component {
       });
   };
 
+  // Completely delets a habit and its habit records from database
   deleteHabit = habit => {
-    console.log("deleteHabit() invoked");
-    console.log(habit);
-
-    const token = localStorage.getItem("token");
-
-    const requestOptions = {
-      headers: {
-        authorization: token
-      }
-    };
+    const headers = this.buildHeader();
 
     axios
-      .delete(`http://localhost:5000/api/habits/${habit.id}`, requestOptions)
-      // .delete(`https://life-gpa.herokuapp.com/api/habits/${habit.id}`, requestOptions)
+      .delete(`http://localhost:5000/api/habits/${habit.id}`, headers)
+      // .delete(`https://life-gpa.herokuapp.com/api/habits/${habit.id}`, headers)
       .then(res => {
-        console.log(res.data);
         this.getHabits();
       })
       .catch(err => {
@@ -170,16 +144,17 @@ class HomeView extends React.Component {
       });
   }
 
+  // Hover event to show description of the life gpa calculation
   showGPADescription = () => {
     setTimeout(() => {this.setState({ showDescription: true })}, 700)
   }
 
+  // Hover event to hide description of the life gpa calculation
   hideGPADescription = () => {
     this.setState({ showDescription: false })
   }
 
   render() {
-    console.log(this.state.allCompleted);
     return (
       <div className="homeview-wrapper">
 

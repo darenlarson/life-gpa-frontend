@@ -10,12 +10,15 @@ class Login extends React.Component {
     };
   }
 
+  // Handler for entering form data to state
   handleChange = event => {
     this.setState({ [event.target.name]: event.target.value });
   };
 
+  // Submits form and invokes loginUser()
   handleSubmit = e => {
     e.preventDefault();
+    // Sends username and password to server
     this.props.loginUser(this.state);
   };
 

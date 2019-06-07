@@ -11,12 +11,13 @@ import MobileFooter from "./components/MobileFooter";
 // https://life-gpa.herokuapp.com/
 
 class App extends Component {
+
+  // Adds a new user to database
   registerUser = userInfo => {
     axios
       .post(`http://localhost:5000/api/users/register`, userInfo)
       // .post(`https://life-gpa.herokuapp.com//api/users/register`, userInfo)
       .then(res => {
-        console.log(res.data);
         this.loginUser(userInfo);
       })
       .catch(err => {
@@ -24,12 +25,12 @@ class App extends Component {
       });
   };
 
+  // Logs a user into the application
   loginUser = userInfo => {
     axios
       .post(`http://localhost:5000/api/users/login`, userInfo)
       // .post(`https://life-gpa.herokuapp.com/api/users/login`, userInfo)
       .then(res => {
-        // console.log(res.data);
         localStorage.setItem("id", res.data.id);
         localStorage.setItem("token", res.data.token);
         this.props.history.push("/home");
@@ -39,12 +40,11 @@ class App extends Component {
       });
   };
 
+  // Logs user out of app and routes to login screen
   logoutUser = e => {
     e.preventDefault();
-
     localStorage.removeItem("id");
     localStorage.removeItem("token");
-
     this.props.history.push("/");
   };
 
