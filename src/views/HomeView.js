@@ -39,8 +39,8 @@ class HomeView extends React.Component {
     const headers = this.buildHeader();
 
     axios
-      .get(`http://localhost:5000/api/habits/${userId}/user-habits`, headers)
-      // .get(`https://life-gpa.herokuapp.com/api/habits/${userId}/user-habits`, headers)
+      // .get(`http://localhost:5000/api/habits/${userId}/user-habits`, headers)
+      .get(`https://life-gpa.herokuapp.com/api/habits/${userId}/user-habits`, headers)
       .then(res => {
         this.setState({
           habits: res.data.habits,
@@ -69,8 +69,8 @@ class HomeView extends React.Component {
     };
 
     axios
-      .post(`http://localhost:5000/api/habits/${userId}/user-habits`, habitInfo, headers)
-      // .post(`https://life-gpa.herokuapp.com/api/habits/${userId}/user-habits`, habitInfo, headers)
+      // .post(`http://localhost:5000/api/habits/${userId}/user-habits`, habitInfo, headers)
+      .post(`https://life-gpa.herokuapp.com/api/habits/${userId}/user-habits`, habitInfo, headers)
       .then(res => {
         console.log(res.data);
         this.getHabits();
@@ -97,8 +97,8 @@ class HomeView extends React.Component {
     const headers = this.buildHeader();
 
     axios
-      .post(`http://localhost:5000/api/habits/complete-habit`, habitInfo, headers)
-      // .post(`https://life-gpa.herokuapp.com/api/habits/complete-habit`, habitInfo, headers)
+      // .post(`http://localhost:5000/api/habits/complete-habit`, habitInfo, headers)
+      .post(`https://life-gpa.herokuapp.com/api/habits/complete-habit`, habitInfo, headers)
       .then(res => {
         // console.log(res.data);
         this.getHabits();
@@ -118,8 +118,8 @@ class HomeView extends React.Component {
     const headers = this.buildHeader();
 
     axios
-      .put(`http://localhost:5000/api/habits/reset-habit`, id, headers)
-      // .put(`https://life-gpa.herokuapp.com/api/habits/reset-habit`, id, headers)
+      // .put(`http://localhost:5000/api/habits/reset-habit`, id, headers)
+      .put(`https://life-gpa.herokuapp.com/api/habits/reset-habit`, id, headers)
       .then(res => {
         this.getHabits();
       })
@@ -133,8 +133,8 @@ class HomeView extends React.Component {
     const headers = this.buildHeader();
 
     axios
-      .delete(`http://localhost:5000/api/habits/${habit.id}`, headers)
-      // .delete(`https://life-gpa.herokuapp.com/api/habits/${habit.id}`, headers)
+      // .delete(`http://localhost:5000/api/habits/${habit.id}`, headers)
+      .delete(`https://life-gpa.herokuapp.com/api/habits/${habit.id}`, headers)
       .then(res => {
         this.getHabits();
       })
