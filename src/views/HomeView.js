@@ -6,6 +6,8 @@ import ManageHabits from "../components/ManageHabits";
 import axios from "axios";
 import "./css/HomeView.css";
 
+import ClipLoader from "react-spinners/ClipLoader";
+
 // https://life-gpa.herokuapp.com/
 
 class HomeView extends React.Component {
@@ -16,12 +18,17 @@ class HomeView extends React.Component {
       totalLifeGPA: 0,
       allCompleted: false,
       showDescription: false,
+      loading: true
     };
   }
 
   // Fetch habit data as soon as component mounts
   componentDidMount() {
     this.getHabits();
+
+    setTimeout( () => {
+      this.setState({ loading: false })
+    }, 500)
   }
 
   // builders the headers since they're all the same
@@ -39,8 +46,8 @@ class HomeView extends React.Component {
     const headers = this.buildHeader();
 
     axios
-      // .get(`http://localhost:5000/api/habits/${userId}/user-habits`, headers)
-      .get(`https://life-gpa.herokuapp.com/api/habits/${userId}/user-habits`, headers)
+      .get(`http://localhost:5000/api/habits/${userId}/user-habits`, headers)
+      // .get(`https://life-gpa.herokuapp.com/api/habits/${userId}/user-habits`, headers)
       .then(res => {
         this.setState({
           habits: res.data.habits,
@@ -69,8 +76,8 @@ class HomeView extends React.Component {
     };
 
     axios
-      // .post(`http://localhost:5000/api/habits/${userId}/user-habits`, habitInfo, headers)
-      .post(`https://life-gpa.herokuapp.com/api/habits/${userId}/user-habits`, habitInfo, headers)
+      .post(`http://localhost:5000/api/habits/${userId}/user-habits`, habitInfo, headers)
+      // .post(`https://life-gpa.herokuapp.com/api/habits/${userId}/user-habits`, habitInfo, headers)
       .then(res => {
         console.log(res.data);
         this.getHabits();
@@ -97,8 +104,8 @@ class HomeView extends React.Component {
     const headers = this.buildHeader();
 
     axios
-      // .post(`http://localhost:5000/api/habits/complete-habit`, habitInfo, headers)
-      .post(`https://life-gpa.herokuapp.com/api/habits/complete-habit`, habitInfo, headers)
+      .post(`http://localhost:5000/api/habits/complete-habit`, habitInfo, headers)
+      // .post(`https://life-gpa.herokuapp.com/api/habits/complete-habit`, habitInfo, headers)
       .then(res => {
         // console.log(res.data);
         this.getHabits();
@@ -118,8 +125,8 @@ class HomeView extends React.Component {
     const headers = this.buildHeader();
 
     axios
-      // .put(`http://localhost:5000/api/habits/reset-habit`, id, headers)
-      .put(`https://life-gpa.herokuapp.com/api/habits/reset-habit`, id, headers)
+      .put(`http://localhost:5000/api/habits/reset-habit`, id, headers)
+      // .put(`https://life-gpa.herokuapp.com/api/habits/reset-habit`, id, headers)
       .then(res => {
         this.getHabits();
       })
@@ -133,8 +140,8 @@ class HomeView extends React.Component {
     const headers = this.buildHeader();
 
     axios
-      // .delete(`http://localhost:5000/api/habits/${habit.id}`, headers)
-      .delete(`https://life-gpa.herokuapp.com/api/habits/${habit.id}`, headers)
+      .delete(`http://localhost:5000/api/habits/${habit.id}`, headers)
+      // .delete(`https://life-gpa.herokuapp.com/api/habits/${habit.id}`, headers)
       .then(res => {
         this.getHabits();
       })
@@ -155,44 +162,52 @@ class HomeView extends React.Component {
   }
 
   render() {
-    return (
-      <div className="homeview-wrapper">
-
-        <div onMouseEnter={() => this.showGPADescription()} onMouseLeave={() => this.hideGPADescription()}>
-          <LifeGPADisplay lifeGPA={this.state.totalLifeGPA} />
+    if (this.state.loading) {
+      return (
+        <div className="homeview-wrapper spinner">
+          <ClipLoader sizeUnit={"px"} size={100} color={"#D87B92"} loading={this.state.loading} />
         </div>
+      )
+    } else {
+      return (
+        <div className="homeview-wrapper">
 
-        <div className={`${this.state.showDescription ? "show-description" : "hide-description"}`}>
-          <p>LifeGPA is calculated using a complex formula that you wouldn't understand. Don't worry about how we calculate it. Just know that higher is better than lower.</p>
+          <div onMouseEnter={() => this.showGPADescription()} onMouseLeave={() => this.hideGPADescription()}>
+            <LifeGPADisplay lifeGPA={this.state.totalLifeGPA} />
+          </div>
+
+          <div className={`${this.state.showDescription ? "show-description" : "hide-description"}`}>
+            <p>LifeGPA is calculated using a complex formula that you wouldn't understand. Don't worry about how we calculate it. Just know that higher is better than lower.</p>
+          </div>
+
+          <Route
+            exact
+            path="/home"
+            render={props => (
+              <HabitsList
+                {...props}
+                habits={this.state.habits}
+                completeHabit={this.completeHabit}
+                allCompleted={this.state.allCompleted}
+              />
+            )}
+          />
+
+          <Route
+            path="/home/manage-habits"
+            render={props => (
+              <ManageHabits
+                {...props}
+                habits={this.state.habits}
+                resetData={this.resetData}
+                deleteHabit={this.deleteHabit}
+                addHabit={this.addHabit}
+              />
+            )}
+          />
         </div>
-
-        <Route
-          exact
-          path="/home"
-          render={props => (
-            <HabitsList
-              {...props}
-              habits={this.state.habits}
-              completeHabit={this.completeHabit}
-              allCompleted={this.state.allCompleted}
-            />
-          )}
-        />
-
-        <Route
-          path="/home/manage-habits"
-          render={props => (
-            <ManageHabits
-              {...props}
-              habits={this.state.habits}
-              resetData={this.resetData}
-              deleteHabit={this.deleteHabit}
-              addHabit={this.addHabit}
-            />
-          )}
-        />
-      </div>
-    );
+      );
+    }
   }
 }
 

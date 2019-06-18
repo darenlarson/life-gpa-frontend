@@ -15,8 +15,8 @@ class App extends Component {
   // Adds a new user to database
   registerUser = userInfo => {
     axios
-      // .post(`http://localhost:5000/api/users/register`, userInfo)
-      .post(`https://life-gpa.herokuapp.com//api/users/register`, userInfo)
+      .post(`http://localhost:5000/api/users/register`, userInfo)
+      // .post(`https://life-gpa.herokuapp.com//api/users/register`, userInfo)
       .then(res => {
         this.loginUser(userInfo);
       })
@@ -27,9 +27,11 @@ class App extends Component {
 
   // Logs a user into the application
   loginUser = userInfo => {
+    this.setState({ loading: true });
+
     axios
-      // .post(`http://localhost:5000/api/users/login`, userInfo)
-      .post(`https://life-gpa.herokuapp.com/api/users/login`, userInfo)
+      .post(`http://localhost:5000/api/users/login`, userInfo)
+      // .post(`https://life-gpa.herokuapp.com/api/users/login`, userInfo)
       .then(res => {
         localStorage.setItem("id", res.data.id);
         localStorage.setItem("token", res.data.token);
@@ -51,31 +53,14 @@ class App extends Component {
   render() {
     return (
       <div className="App">
-        <Route
-          path="/"
-          render={props => (
-            <Header
-              {...props}
-              logoutUser={this.logoutUser}
-            />
-          )}
-        />
+        <Route path="/" render={props => <Header {...props} logoutUser={this.logoutUser} />} />
 
-        <div className="main">
-          <Route
-            exact
-            path="/"
-            render={props => (
-              <CredentialsView
-                {...props}
-                registerUser={this.registerUser}
-                loginUser={this.loginUser}
-              />
-            )}
-          />
+          <div className="main">
+            <Route exact path="/" render={props => (<CredentialsView {...props} registerUser={this.registerUser} loginUser={this.loginUser} /> )} />
 
-          <Route path="/home" render={props => <HomeView {...props} />} />
-        </div>
+            <Route path="/home" render={props => <HomeView {...props} />} />
+          </div>
+        
         <Route path="/" component={Footer} />
         <Route path="/home" component={MobileFooter} />
       </div>

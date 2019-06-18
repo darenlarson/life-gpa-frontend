@@ -1,3 +1,9 @@
+.spinner {
+  display: flex;
+  justify-content: center;
+  margin-top: 200px;
+}
+
 .homeview-wrapper {
   width: 600px;
   margin-bottom: 100px;
