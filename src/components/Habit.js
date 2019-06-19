@@ -1,4 +1,5 @@
 import React from "react";
+import PropTypes from 'prop-types';
 import "./css/Habit.css";
 
 class Habit extends React.Component {
@@ -8,7 +9,7 @@ class Habit extends React.Component {
       show: false
     };
   }
-
+  
   // Invoked when stats button clicked, which expands the habit to show GPA stats
   toggleVisibility = () => {
     // Stat element shown when this.state.show === true
@@ -23,6 +24,7 @@ class Habit extends React.Component {
 
     return (
       <div className="habit-wrapper">
+      {console.log(this.props)}
         <div className="btn-ctn">
           <button onClick={() => this.props.completeHabit(this.props.habit)} className={`status-btn ${lastCompleted - today === 0 ? "completed" : "noncompleted"}`}>Done</button>
         </div>
@@ -41,5 +43,38 @@ class Habit extends React.Component {
     );
   }
 }
+
+// Post.propTypes = {
+//     post: PropTypes.shape({
+//         username: PropTypes.string,
+//         thumbnailURL: PropTypes.string,
+//         imageURL: PropTypes.string,
+//         likes: PropTypes.number,
+//         timestamp: PropTypes.string,
+//         comments: PropTypes.arrayOf(
+//             PropTypes.shape({
+//                 username: PropTypes.string,
+//                 text: PropTypes.string
+//             })
+//         )
+//     })
+// }
+
+Habit.propTypes = {
+  habit: PropTypes.shape({
+    id: PropTypes.number.isRequired,
+    habit_name: PropTypes.string.isRequired,
+    user_id: PropTypes.number.isRequired,
+    date_created: PropTypes.string.isRequired,
+    last_completed: PropTypes.string.isRequired
+  })
+}
+
+// {habit: {…}, completeHabit: ƒ}
+// completeHabit: ƒ (habit)
+// habit: {id: 44, habit_name: "Get up early", user_id: 1, date_created: "2019-06-06T05:00:00.000Z", last_completed: "2019-06-06T05:00:00.000Z", …}
+// key: (...)
+// get key: ƒ warnAboutAccessingKey()
+// __proto__: Object
 
 export default Habit;
