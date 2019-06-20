@@ -1,4 +1,5 @@
 import React from "react";
+import PropTypes from 'prop-types';
 import "./css/Login.css";
 
 class Login extends React.Component {
@@ -49,6 +50,10 @@ class Login extends React.Component {
       </div>
     );
   }
+}
+
+Login.propTypes = {
+  loginUser: PropTypes.func.isRequired
 }
 
 export default Login;

@@ -24,7 +24,6 @@ class Habit extends React.Component {
 
     return (
       <div className="habit-wrapper">
-      {console.log(this.props)}
         <div className="btn-ctn">
           <button onClick={() => this.props.completeHabit(this.props.habit)} className={`status-btn ${lastCompleted - today === 0 ? "completed" : "noncompleted"}`}>Done</button>
         </div>
@@ -44,22 +43,6 @@ class Habit extends React.Component {
   }
 }
 
-// Post.propTypes = {
-//     post: PropTypes.shape({
-//         username: PropTypes.string,
-//         thumbnailURL: PropTypes.string,
-//         imageURL: PropTypes.string,
-//         likes: PropTypes.number,
-//         timestamp: PropTypes.string,
-//         comments: PropTypes.arrayOf(
-//             PropTypes.shape({
-//                 username: PropTypes.string,
-//                 text: PropTypes.string
-//             })
-//         )
-//     })
-// }
-
 Habit.propTypes = {
   habit: PropTypes.shape({
     id: PropTypes.number.isRequired,
@@ -67,14 +50,8 @@ Habit.propTypes = {
     user_id: PropTypes.number.isRequired,
     date_created: PropTypes.string.isRequired,
     last_completed: PropTypes.string.isRequired
-  })
+  }),
+  completeHabit: PropTypes.func.isRequired,
 }
-
-// {habit: {…}, completeHabit: ƒ}
-// completeHabit: ƒ (habit)
-// habit: {id: 44, habit_name: "Get up early", user_id: 1, date_created: "2019-06-06T05:00:00.000Z", last_completed: "2019-06-06T05:00:00.000Z", …}
-// key: (...)
-// get key: ƒ warnAboutAccessingKey()
-// __proto__: Object
 
 export default Habit;

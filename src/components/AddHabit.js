@@ -1,4 +1,5 @@
 import React from "react";
+import PropTypes from 'prop-types';
 import './css/AddHabit.css';
 
 class AddHabit extends React.Component {
@@ -40,6 +41,10 @@ class AddHabit extends React.Component {
       </div>
     );
   }
+}
+
+AddHabit.propTypes = {
+  addHabit: PropTypes.func.isRequired
 }
 
 export default AddHabit;

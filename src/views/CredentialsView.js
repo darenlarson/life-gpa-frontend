@@ -1,4 +1,5 @@
 import React from "react";
+import PropTypes from 'prop-types';
 import Login from "../components/Login";
 import Register from "../components/Register";
 import "./css/CredentialsView.css";
@@ -35,6 +36,11 @@ class CredentialsView extends React.Component {
       </div>
     );
   }
+}
+
+CredentialsView.propTypes = {
+  registerUser: PropTypes.func.isRequired,
+  loginUser: PropTypes.func.isRequired
 }
 
 export default CredentialsView;

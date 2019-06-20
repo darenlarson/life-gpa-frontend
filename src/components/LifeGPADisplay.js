@@ -1,4 +1,5 @@
 import React from "react";
+import PropTypes from 'prop-types';
 import "./css/LifeGPADisplay.css";
 
 const LifeGPADisplay = props => {
@@ -10,5 +11,9 @@ const LifeGPADisplay = props => {
     </div>
   );
 };
+
+LifeGPADisplay.propTypes = {
+  lifeGPA: PropTypes.number.isRequired
+}
 
 export default LifeGPADisplay;

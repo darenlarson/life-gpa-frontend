@@ -1,4 +1,5 @@
 import React from "react";
+import PropTypes from 'prop-types';
 import './css/Register.css';
 
 class Register extends React.Component {
@@ -67,6 +68,10 @@ class Register extends React.Component {
       </div>
     );
   }
+}
+
+Register.propTypes = {
+  registerUser: PropTypes.func.isRequired
 }
 
 export default Register;
