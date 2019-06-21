@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import axios from "axios";
 import { Route, withRouter } from "react-router-dom";
+import LandingPage from './landingPage/LandingPage';
 import Header from "./components/Header";
 import CredentialsView from "./views/CredentialsView";
 import HomeView from "./views/HomeView";
@@ -53,7 +54,8 @@ class App extends Component {
   render() {
     return (
       <div className="App">
-        <Route path="/" render={props => <Header {...props} logoutUser={this.logoutUser} />} />
+        <LandingPage />
+        {/* <Route path="/" render={props => <Header {...props} logoutUser={this.logoutUser} />} />
 
           <div className="main">
             <Route exact path="/" render={props => (<CredentialsView {...props} registerUser={this.registerUser} loginUser={this.loginUser} /> )} />
@@ -62,7 +64,7 @@ class App extends Component {
           </div>
         
         <Route path="/" component={Footer} />
-        <Route path="/home" component={MobileFooter} />
+        <Route path="/home" component={MobileFooter} /> */}
       </div>
     );
   }
