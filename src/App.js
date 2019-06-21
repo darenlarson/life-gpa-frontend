@@ -54,8 +54,8 @@ class App extends Component {
   render() {
     return (
       <div className="App">
-        <LandingPage />
-        {/* <Route path="/" render={props => <Header {...props} logoutUser={this.logoutUser} />} />
+        {/* <Route exact path="/" component={LandingPage} /> */}
+        <Route path="/" render={props => <Header {...props} logoutUser={this.logoutUser} />} />
 
           <div className="main">
             <Route exact path="/" render={props => (<CredentialsView {...props} registerUser={this.registerUser} loginUser={this.loginUser} /> )} />
@@ -64,7 +64,7 @@ class App extends Component {
           </div>
         
         <Route path="/" component={Footer} />
-        <Route path="/home" component={MobileFooter} /> */}
+        <Route path="/home" component={MobileFooter} />
       </div>
     );
   }
