@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import axios from "axios";
 import { Route, withRouter } from "react-router-dom";
-import LandingPage from './landingPage/LandingPage';
+import LandingPage from './components/LandingPage';
 import Header from "./components/Header";
 import CredentialsView from "./views/CredentialsView";
 import HomeView from "./views/HomeView";
