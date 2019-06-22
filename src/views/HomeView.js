@@ -172,7 +172,8 @@ class HomeView extends React.Component {
       return (
         <div className="homeview-wrapper">
 
-          <div onMouseEnter={() => this.showGPADescription()} onMouseLeave={() => this.hideGPADescription()}>
+          {/* <div onMouseEnter={() => this.showGPADescription()} onMouseLeave={() => this.hideGPADescription()}> */}
+          <div>
             <LifeGPADisplay lifeGPA={this.state.totalLifeGPA} />
           </div>
 
@@ -182,7 +183,7 @@ class HomeView extends React.Component {
 
           <Route
             exact
-            path="/home"
+            path="/habits/home"
             render={props => (
               <HabitsList
                 {...props}
@@ -194,7 +195,7 @@ class HomeView extends React.Component {
           />
 
           <Route
-            path="/home/manage-habits"
+            path="/habits/home/manage-habits"
             render={props => (
               <ManageHabits
                 {...props}

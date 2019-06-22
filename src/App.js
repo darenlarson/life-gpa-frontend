@@ -36,7 +36,7 @@ class App extends Component {
       .then(res => {
         localStorage.setItem("id", res.data.id);
         localStorage.setItem("token", res.data.token);
-        this.props.history.push("/home");
+        this.props.history.push("/habits/home");
       })
       .catch(err => {
         console.log(err);
@@ -54,16 +54,16 @@ class App extends Component {
   render() {
     return (
       <div className="App">
-        {/* <Route exact path="/" component={LandingPage} /> */}
-        <Route path="/" render={props => <Header {...props} logoutUser={this.logoutUser} />} />
+        <Route exact path="/" component={LandingPage} />
+        <Route path="/habits" render={props => <Header {...props} logoutUser={this.logoutUser} />} />
 
           <div className="main">
-            <Route exact path="/" render={props => (<CredentialsView {...props} registerUser={this.registerUser} loginUser={this.loginUser} /> )} />
+            <Route exact path="/habits/login" render={props => (<CredentialsView {...props} registerUser={this.registerUser} loginUser={this.loginUser} /> )} />
 
-            <Route path="/home" render={props => <HomeView {...props} />} />
+            <Route path="/habits/home" render={props => <HomeView {...props} />} />
           </div>
         
-        <Route path="/" component={Footer} />
+        <Route path="/habits" component={Footer} />
         <Route path="/home" component={MobileFooter} />
       </div>
     );

@@ -20,16 +20,16 @@ const Header = props => {
             {loggedIn === true && (
               <>
                 <NavLink
-                  to="/home"
+                  to="/habits/home"
                   className={`nav-btn hide ${props.history.location.pathname ===
-                    "/home" && "selected"}`}
+                    "/habits/home" && "selected"}`}
                 >
                   HOME
                 </NavLink>
                 <NavLink
-                  to="/home/manage-habits"
+                  to="/habits/home/manage-habits"
                   className={`nav-btn hide ${props.history.location.pathname ===
-                    "/home/manage-habits" && "selected"}`}
+                    "/habits/home/manage-habits" && "selected"}`}
                 >
                   MANAGE HABITS
                 </NavLink>
