@@ -75,6 +75,7 @@ export const logoutUser = history => {
 function buildHeader() {
   const token = localStorage.getItem("token");
   const headers = { headers: { authorization: token } };
+  
   return headers;
 };
 
@@ -111,8 +112,9 @@ export const addHabit = habitName => dispatch => {
     .post(`${baseURL}/api/habits/${userId}/user-habits`, habitInfo, headers)
     .then(res => {
       dispatch({ type: ADD_HABIT_SUCCESS, payload: res });
-
-      getHabits();
+    })
+    .then(() => {
+      dispatch(getHabits());
     })
     .catch(err => {
       dispatch({ type: ADD_HABIT_FAILURE, payload: err });
@@ -159,11 +161,12 @@ export const resetData = habit => dispatch => {
     .put(`${baseURL}/api/habits/reset-habit`, id, headers)
     .then(res => {
       dispatch({ type: RESET_HABIT_SUCCESS, payload: res });
-
-      getHabits();
+    })
+    .then(() => {
+      dispatch(getHabits());
     })
     .catch(err => {
-      dispatch({ type: RESET_HABIT_FAILURE, error: err });
+      dispatch({ type: RESET_HABIT_FAILURE, payload: err });
     });
 };
 
@@ -176,10 +179,12 @@ export const deleteHabit = habit => dispatch => {
     .delete(`${baseURL}/api/habits/${habit.id}`, headers)
     .then(res => {
       dispatch({ type: DELETE_HABIT_SUCCESS, payload: res });
-      getHabits();
+    })
+    .then(() => {
+      dispatch(getHabits());
     })
     .catch(err => {
-      dispatch({ type: DELETE_HABIT_FAILURE, error: err });
+      dispatch({ type: DELETE_HABIT_FAILURE, payload: err });
       getHabits();
     });
 };

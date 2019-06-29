@@ -37,7 +37,11 @@ const initialState = {
   registered: false,
   error: false,
   addingHabit: false,
-  habitAdded: true,
+  habitAdded: false,
+  resettingHabit: false,
+  habitReset: false,
+  deletingHabit: false,
+  habitDeleted: false,
 };
 
 const reducer = (state = initialState, action) => {
@@ -47,6 +51,7 @@ const reducer = (state = initialState, action) => {
         ...state,
         loggingIn: true,
       }
+      
     case LOGIN_SUCCESS:
       return {
         ...state,
@@ -54,21 +59,25 @@ const reducer = (state = initialState, action) => {
         loggingIn: false,
         error: false
       }
+
     case LOGIN_FAILURE:
       return {
         ...state,
         loggingIn: false,
         error: action.payload
       }
+
     case LOGOUT_USER:
       return {
         state: initialState
       }
+
     case REGISTER_START:
       return {
         ...state,
         registering: true,
       }
+
     case REGISTER_SUCCESS:
       return {
         ...state,
@@ -76,17 +85,20 @@ const reducer = (state = initialState, action) => {
         registered: true,
         error: false,
       }
+
     case REGISTER_FAILURE:
       return {
         ...state,
         registering: false,
         error: action.payload,
       }
+
     case GET_HABITS_START:
       return {
         ...state,
         gettingHabits: true,
       }
+
     case GET_HABITS_SUCCESS:
       return {
         ...state,
@@ -96,47 +108,98 @@ const reducer = (state = initialState, action) => {
         error: false,
         gettingHabits: false,
       }
+
     case GET_HABITS_FAILURE:
       return {
         ...state,
         error: action.payload,
         gettingHabits: false,
       }
+
     case ADD_HABIT_START:
-      return {}
+      return {
+        ...state,
+        addingHabit: true,
+      }
+
     case ADD_HABIT_SUCCESS:
-      return {}
+      return {
+        ...state,
+        addingHabit: false,
+        habitAdded: true,
+        error: false,
+      }
+
     case ADD_HABIT_FAILURE:
-      return {}
+      return {
+        ...state,
+        addingHabit: false,
+        error: action.payload,
+        habitAdded: false,
+      }
+
     case COMPLETE_HABIT_START:
       return {
         ...state,
         addingHabit: true,
       }
+
     case COMPLETE_HABIT_SUCCESS:
       return {
         ...state,
         addingHabit: false,
         habitAdded: true,
       }
+
     case COMPLETE_HABIT_FAILURE:
       return {
         ...state,
         addingHabit: false,
         error: action.payload
       }
+
     case RESET_HABIT_START:
-      return {}
+      return {
+        ...state,
+        resettingHabit: true,
+      }
+
     case RESET_HABIT_SUCCESS:
-      return {}
+      return {
+        ...state,
+        resettingHabit: false,
+        habitReset: true,
+      }
+
     case RESET_HABIT_FAILURE:
-      return {}
+      return {
+        ...state,
+        resettingHabit: false,
+        habitReset: false,
+        error: action.payload
+      }
+
     case DELETE_HABIT_START:
-      return {}
+      return {
+        ...state,
+        deletingHabit: true,
+        error: false,
+      }
+
     case DELETE_HABIT_SUCCESS:
-      return {}
+      return {
+        ...state,
+        deletingHabit: false,
+        habitDeleted: true,
+      }
+
     case DELETE_HABIT_FAILURE:
-      return {}
+      return {
+        ...state,
+        deletingHabit: false,
+        habitDeleted: false,
+        error: action.payload,
+      }
 
     default:
       return state
