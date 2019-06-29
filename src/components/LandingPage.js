@@ -20,6 +20,9 @@ import adjustImg from "../assets/adjust.svg";
 import sixImg from "../assets/six.svg";
 import achieveImg from "../assets/achieve.svg";
 
+const baseURL = 'https://life-gpa.netlify.com';
+// const baseURL = 'http://localhost:3000';
+
 const LandingPage = () => {
   return (
     <div className="landing">
@@ -27,8 +30,7 @@ const LandingPage = () => {
         <div className="navigation">
           <h1>Life GPA</h1>
           {/* <nav> */}
-            {/* <a href="https://life-gpa.netlify.com/"> */}
-            <a href="http://localhost:3000/habits/login">
+            <a href={`${baseURL}/habits/login`}>
               <button id="login">Login</button>
             </a>
           {/* </nav> */}
@@ -39,7 +41,7 @@ const LandingPage = () => {
             <br />
             your best self?
           </h1>
-          <a href="https://life-gpa.netlify.com/">
+          <a href={`${baseURL}/habits/login`}>
             <button>Let's go!</button>
           </a>
         </section>
