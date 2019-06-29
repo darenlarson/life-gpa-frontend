@@ -22,7 +22,7 @@ class Register extends React.Component {
   handleSubmit = e => {
     e.preventDefault();
     // Sends registration information to server
-    this.props.registerUser(this.state);
+    this.props.registerUser(this.props.history, this.state);
   };
 
   render() {

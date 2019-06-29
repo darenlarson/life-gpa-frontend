@@ -1,8 +1,10 @@
 import React from "react";
+import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
 import Login from "../components/Login";
 import Register from "../components/Register";
 import "./css/CredentialsView.css";
+import { loginUser, registerUser } from '../store/actions';
 
 class CredentialsView extends React.Component {
   state = {
@@ -30,7 +32,7 @@ class CredentialsView extends React.Component {
           </header>
 
           <div className="form-container">
-            {this.state.login ? <Login loginUser={this.props.loginUser} /> : <Register registerUser={this.props.registerUser} />}
+            {this.state.login ? <Login history={this.props.history} loginUser={this.props.loginUser} /> : <Register history={this.props.history} registerUser={this.props.registerUser} />}
           </div>
         </div>
       </div>
@@ -43,4 +45,4 @@ CredentialsView.propTypes = {
   loginUser: PropTypes.func.isRequired
 }
 
-export default CredentialsView;
+export default connect(null, { loginUser, registerUser })(CredentialsView);

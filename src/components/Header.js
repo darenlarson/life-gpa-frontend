@@ -1,6 +1,8 @@
 import React from "react";
 import PropTypes from "prop-types";
+import { connect } from 'react-redux';
 import { NavLink } from "react-router-dom";
+import { logoutUser } from '../store/actions';
 import "./css/Header.css";
 
 const Header = props => {
@@ -35,7 +37,7 @@ const Header = props => {
                 </NavLink>
                 <button
                   className="nav-btn"
-                  onClick={event => props.logoutUser(event)}
+                  onClick={event => props.logoutUser(props.history)}
                 >
                   LOGOUT
                 </button>
@@ -52,4 +54,4 @@ Header.propTypes = {
   logoutUser: PropTypes.func.isRequired
 };
 
-export default Header;
+export default connect(null, { logoutUser })(Header);
