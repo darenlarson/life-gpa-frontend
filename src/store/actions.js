@@ -28,7 +28,6 @@ const baseURL = `https://life-gpa.herokuapp.com`;
 // const baseURL = 'http://localhost:5000';
 
 export const loginUser = (history, userInfo) => dispatch => {
-  console.log('here2')
   dispatch({ type: LOGIN_START, message: "Logging user in" });
 
   axios
@@ -42,7 +41,7 @@ export const loginUser = (history, userInfo) => dispatch => {
       dispatch({ type: LOGIN_SUCCESS, payload: res.data });
     })
     .catch(err => {
-      dispatch({ type: LOGIN_FAILURE, error: err });
+      dispatch({ type: LOGIN_FAILURE, payload: err });
     });
 };
 
@@ -61,7 +60,7 @@ export const registerUser = (history, userInfo) => dispatch => {
       loginUser(history, userInfo);
     })
     .catch(err => {
-      dispatch({ type: REGISTER_FAILURE, error: err });
+      dispatch({ type: REGISTER_FAILURE, payload: err });
     });
 };
 
@@ -69,7 +68,7 @@ export const logoutUser = history => {
   history.push("/");
   localStorage.removeItem("id");
   localStorage.removeItem("token");
-  
+
   return { type: LOGOUT_USER }
 }
 
@@ -84,22 +83,15 @@ export const getHabits = () => dispatch => {
 
   const userId = localStorage.getItem("id");
 
-  // Generates header with authorization: token
   const headers = buildHeader();
 
   axios
     .get(`${baseURL}/api/habits/${userId}/user-habits`, headers)
     .then(res => {
       dispatch({ type: GET_HABITS_SUCCESS, payload: res.data });
-      // this.setState({
-      //   habits: res.data.habits,
-      //   habitRecords: res.data.habitRecords,
-      //   totalLifeGPA: res.data.lifeGPA,
-      //   allCompleted: res.data.allComplete
-      // });
     })
     .catch(err => {
-      dispatch({ type: GET_HABITS_FAILURE, error: err });
+      dispatch({ type: GET_HABITS_FAILURE, payload: err });
     });
 };
 
@@ -123,7 +115,7 @@ export const addHabit = habitName => dispatch => {
       getHabits();
     })
     .catch(err => {
-      dispatch({ type: ADD_HABIT_FAILURE, error: err });
+      dispatch({ type: ADD_HABIT_FAILURE, payload: err });
     });
 };
 
@@ -144,11 +136,12 @@ export const completeHabit = habit => dispatch => {
     .post(`${baseURL}/api/habits/complete-habit`, habitInfo, headers)
     .then(res => {
       dispatch({ type: COMPLETE_HABIT_SUCCESS, payload: res });
-
-      getHabits();
+    })
+    .then(() => {
+      dispatch(getHabits());
     })
     .catch(err => {
-      dispatch({ type: COMPLETE_HABIT_FAILURE, error: err });
+      dispatch({ type: COMPLETE_HABIT_FAILURE, payload: err });
     });
 };
 

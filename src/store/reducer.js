@@ -36,6 +36,8 @@ const initialState = {
   registering: false,
   registered: false,
   error: false,
+  addingHabit: false,
+  habitAdded: true,
 };
 
 const reducer = (state = initialState, action) => {
@@ -88,6 +90,7 @@ const reducer = (state = initialState, action) => {
     case GET_HABITS_SUCCESS:
       return {
         ...state,
+        habits: action.payload.habits,
         totalLifeGPA: action.payload.lifeGPA,
         allCompleted: action.payload.allComplete,
         error: false,
@@ -100,19 +103,28 @@ const reducer = (state = initialState, action) => {
         gettingHabits: false,
       }
     case ADD_HABIT_START:
-      return {
-
-      }
+      return {}
     case ADD_HABIT_SUCCESS:
       return {}
     case ADD_HABIT_FAILURE:
       return {}
     case COMPLETE_HABIT_START:
-      return {}
+      return {
+        ...state,
+        addingHabit: true,
+      }
     case COMPLETE_HABIT_SUCCESS:
-      return {}
+      return {
+        ...state,
+        addingHabit: false,
+        habitAdded: true,
+      }
     case COMPLETE_HABIT_FAILURE:
-      return {}
+      return {
+        ...state,
+        addingHabit: false,
+        error: action.payload
+      }
     case RESET_HABIT_START:
       return {}
     case RESET_HABIT_SUCCESS:

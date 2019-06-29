@@ -20,7 +20,6 @@ class Login extends React.Component {
   handleSubmit = e => {
     e.preventDefault();
     // Sends username and password to server
-    console.log(this.props.history);
     this.props.loginUser(this.props.history, this.state);
   };
 

@@ -18,7 +18,7 @@ class App extends Component {
         <Route path="/habits" component={Header} />
           <div className="main">
             <Route exact path="/habits/login" component={CredentialsView} />
-            <Route path="/habits/home" render={props => <HomeView {...props} />} />
+            <Route path="/habits/home" component={HomeView} />
           </div>
         <Route path="/habits" component={Footer} />
         <Route path="/home" component={MobileFooter} />
