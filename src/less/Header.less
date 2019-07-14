@@ -1,0 +1,49 @@
+.header-wrapper {
+  background-color: black;
+  padding: 10px 0;
+  position: sticky;
+  top: 0;
+}
+
+.header-ctn {
+  margin: 0 20px;
+
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.logo {
+  color: #D87B92;
+  text-decoration: none;
+}
+
+.nav-btn {
+  color: white;
+  background-color: black;
+  /* border: 1px solid white; */
+  border-radius: 5px;
+  margin: 0 20px;
+  text-decoration: none;
+  font-size: 1.6rem;
+}
+
+.nav-btn:hover {
+  cursor: pointer;
+  color: #D87B92;
+  background-color: black;
+  border-color: #D87B92;
+}
+
+.nav-btn:focus {
+  outline: 0;
+}
+
+@media (max-width: 550px) {
+  .hide {
+    display: none;
+  }
+  .nav-btn {
+    margin: 0;
+  }
+}
