@@ -1,6 +1,7 @@
 import React from "react";
 import PropTypes from 'prop-types';
-import "./css/Habit.css";
+// import "./css/Habit.css";
+import '../css/index.css';
 
 class Habit extends React.Component {
   constructor(props) {

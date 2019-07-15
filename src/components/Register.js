@@ -1,6 +1,7 @@
 import React from "react";
 import PropTypes from 'prop-types';
-import './css/Register.css';
+// import './css/Register.css';
+import '../css/index.css';
 
 class Register extends React.Component {
   constructor(props) {

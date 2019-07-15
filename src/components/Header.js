@@ -3,7 +3,8 @@ import PropTypes from "prop-types";
 import { connect } from 'react-redux';
 import { NavLink } from "react-router-dom";
 import { logoutUser } from '../store/actions';
-import "./css/Header.css";
+// import "./css/Header.css";
+import '../css/index.css';
 
 const Header = props => {
   // If loggedIn is true, won't render the HOME and MANAGE HABITS buttons

@@ -178,7 +178,6 @@ h6 {
   display: flex;
   width: 100%;
   margin-bottom: 50px;
-  /* border: 1px solid red; */
 }
 .habit-form {
   width: 100%;
@@ -205,22 +204,17 @@ h6 {
 }
 .habit-form button:hover {
   cursor: pointer;
-  background-color: #D87B92;
+  background-color: #d87b92;
   color: black;
   border: none;
 }
 .habit-wrapper {
-  /* background-color: black; */
   margin: 10px 0;
   padding: 10px 2px;
   border-radius: 10px;
   display: flex;
-  /* justify-content: center; */
   align-items: center;
   width: 100%;
-  /* height: 50px; */
-  /* border: 1px solid red; */
-  /* white-space: nowrap; */
 }
 .habit-wrapper .btn-ctn {
   height: 100%;
@@ -228,32 +222,36 @@ h6 {
   align-items: center;
   margin-right: 20px;
 }
-.status-btn {
+@media (max-width: 550px) {
+  .habit-wrapper .btn-ctn {
+    margin-right: 5px;
+  }
+}
+.habit-wrapper .btn-ctn .status-btn {
   border-radius: 5px;
   margin-left: 20px;
   height: 20px;
   font-size: 1.8rem;
   height: 100%;
 }
-.status-btn:focus {
+.habit-wrapper .btn-ctn .status-btn:focus {
   outline: 0;
 }
-.completed {
-  background: #D87B92;
-  border-color: #D87B92;
+.habit-wrapper .btn-ctn .status-btn:hover {
+  background: #d87b92;
+  color: black;
+  border-color: #d87b92;
 }
-.noncompleted {
+.habit-wrapper .btn-ctn .completed {
+  background: #d87b92;
+  border-color: #d87b92;
+}
+.habit-wrapper .btn-ctn .noncompleted {
   background: inherit;
   color: white;
   border: 1px solid white;
 }
-.habit-ctn button:hover {
-  background: #D87B92;
-  color: black;
-  border-color: #D87B92;
-}
-.habit-ctn {
-  /* display: flex; */
+.habit-wrapper .habit-ctn {
   background-color: black;
   border-radius: 5px;
   overflow: scroll;
@@ -264,45 +262,54 @@ h6 {
   justify-content: space-between;
   height: 40px;
   align-items: center;
-  /* width: 400px; */
   width: 100%;
   white-space: nowrap;
 }
-.habit-ctn .name {
+.habit-wrapper .primary-info .name {
   width: 400px;
   margin: 0 0 0 10px;
-  color: #D87B92;
+  color: #d87b92;
   font-size: 2rem;
   overflow: hidden;
 }
-.habit-ctn .stats-btn {
-  color: #D87B92;
+@media (max-width: 550px) {
+  .habit-wrapper .primary-info .name {
+    width: 240px;
+  }
+}
+.habit-wrapper .primary-info .stats-btn {
+  color: #d87b92;
   font-size: 1.4rem;
   margin: 0 10px;
   font-style: italic;
 }
-.habit-ctn .stats-btn:hover {
+.habit-wrapper .primary-info .stats-btn:hover {
   cursor: pointer;
   text-decoration: underline;
+}
+@media (max-width: 550px) {
+  .habit-wrapper .primary-info .stats-btn {
+    margin-left: 0;
+  }
+}
+.habit-wrapper .visible {
+  display: flex;
+}
+.habit-wrapper .hidden {
+  display: none;
 }
 .more-info {
   display: flex;
   flex-direction: row;
 }
-.habit-ctn .GPA {
+.more-info .GPA {
   margin: 0 5px;
-  color: #D87B92;
+  color: #d87b92;
   font-weight: bold;
 }
-.gpa-label {
+.more-info .gpa-label {
   color: white;
   font-weight: normal;
-}
-.visible {
-  display: flex;
-}
-.hidden {
-  display: none;
 }
 .noselect {
   -webkit-touch-callout: none;
@@ -319,17 +326,6 @@ h6 {
   /* Non-prefixed version, currently
                                   supported by Chrome and Opera */
 }
-@media (max-width: 550px) {
-  .habit-wrapper .btn-ctn {
-    margin-right: 5px;
-  }
-  .habit-ctn .name {
-    width: 240px;
-  }
-  .status-btn {
-    margin-left: 0;
-  }
-}
 .complete {
   display: flex;
   justify-content: center;
@@ -337,6 +333,49 @@ h6 {
 }
 .incomplete {
   visibility: hidden;
+}
+.header-wrapper {
+  background-color: black;
+  padding: 10px 0;
+  position: sticky;
+  top: 0;
+}
+.header-ctn {
+  margin: 0 20px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.header-ctn .logo {
+  color: #d87b92;
+  text-decoration: none;
+}
+.header-ctn .nav-btn {
+  color: white;
+  background-color: black;
+  border-radius: 5px;
+  margin: 0 20px;
+  text-decoration: none;
+  font-size: 1.6rem;
+}
+.header-ctn .nav-btn:hover {
+  cursor: pointer;
+  color: #d87b92;
+  background-color: black;
+  border-color: #d87b92;
+}
+.header-ctn .nav-btn:focus {
+  outline: 0;
+}
+@media (max-width: 550px) {
+  .header-ctn .nav-btn {
+    margin: 0;
+  }
+}
+@media (max-width: 550px) {
+  .header-ctn .hide {
+    display: none;
+  }
 }
 .landing .width-100 {
   width: 100%;
@@ -368,17 +407,6 @@ h6 {
   font-weight: 700;
   src: local('PT Sans Bold'), local('PTSans-Bold'), url(https://fonts.gstatic.com/s/ptsans/v10/jizfRExUiTo99u79B_mh0O6tKA.ttf) format('truetype');
 }
-* {
-  box-sizing: border-box;
-}
-html {
-  font-size: 62.5%;
-}
-html,
-.landing {
-  margin: 0;
-  padding: 0;
-}
 /* .landing {
   display: flex;
   justify-content: none;
@@ -391,7 +419,7 @@ html,
 } */
 .landing header {
   width: 100%;
-  background-image: url("../../assets/champion.jpg");
+  background-image: url("../assets/champion.jpg");
   height: 100vh;
   background-size: 100% auto;
   background-repeat: no-repeat;
@@ -733,7 +761,7 @@ html,
   text-align: center;
 }
 .landing .content .phrase {
-  background-image: url("../../assets/phrase6.jpg");
+  background-image: url("../assets/phrase6.jpg");
   background-position: center;
   background-size: 100% auto;
   background-repeat: no-repeat;
@@ -846,7 +874,7 @@ html,
   }
 }
 .about-header {
-  background-image: url("../../assets/about.jpg");
+  background-image: url("../assets/about.jpg");
   align-content: center;
 }
 .hide-navigation {
@@ -1411,33 +1439,29 @@ html,
   margin: 60px 0;
   cursor: help;
 }
-.lifeGPA-ctn {
-  /* background-color: black; */
-  /* padding: 60px 30px; */
-  /* border-radius: 50%; */
+@media (max-width: 550px) {
+  .lifeGPA-wrapper {
+    margin: 30px 0;
+  }
+  .lifeGPA-wrapper .lifeGPA-ctn {
+    align-items: center;
+  }
 }
-.lifeGPA-ctn h1 {
+.lifeGPA-wrapper h1 {
   font-size: 5rem;
-  /* color: #D87B92; */
   color: white;
 }
-.lifeGPA-ctn span {
+.lifeGPA-wrapper span {
   color: white;
   color: black;
   /* color: #D87B92; */
-  background-color: #D87B92;
+  background-color: #d87b92;
   border: 1px solid black;
   border-radius: 10%;
   padding: 3px;
 }
 @media (max-width: 550px) {
-  .lifeGPA-wrapper {
-    margin: 30px 0;
-  }
-  .lifeGPA-ctn {
-    align-items: center;
-  }
-  .lifeGPA-ctn span {
+  .lifeGPA-wrapper span {
     display: block;
     width: 110px;
     margin: 20px auto;
@@ -1616,4 +1640,23 @@ html,
   cursor: pointer;
   color: #D87A92;
   border-color: #D87A92;
+}
+.footer-wrapper {
+  background-color: black;
+  padding: 10px 0;
+  width: 100%;
+  position: fixed;
+  bottom: 0;
+}
+@media (max-width: 550px) {
+  .footer-wrapper {
+    display: none;
+  }
+}
+.footer-wrapper .footer-ctn {
+  margin: 0 20px;
+}
+.footer-wrapper p {
+  color: #d87b92;
+  font-size: 1.6rem;
 }

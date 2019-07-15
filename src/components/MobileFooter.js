@@ -1,6 +1,7 @@
 import React from "react";
 import { NavLink } from "react-router-dom";
-import "./css/MobileFooter.css";
+// import "./css/MobileFooter.css";
+import '../css/index.css';
 
 const MobileFooter = props => {
   return (

@@ -1,6 +1,7 @@
 import React from "react";
 import PropTypes from 'prop-types';
-import "./css/Login.css";
+// import "./css/Login.css";
+import '../css/index.css';
 
 class Login extends React.Component {
   constructor(props) {

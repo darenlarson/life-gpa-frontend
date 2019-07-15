@@ -1,6 +1,7 @@
 import React from "react";
 import PropTypes from 'prop-types';
-import "./css/ManageHabit.css";
+// import "./css/ManageHabit.css";
+import '../css/index.css';
 
 const ManageHabit = props => {
   return (
