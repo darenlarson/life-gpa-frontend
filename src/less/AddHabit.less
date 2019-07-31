@@ -7,15 +7,21 @@
 .habit-form {
   width: 100%;
   display: flex;
-  justify-content: space-between;
+  flex-direction: column;
   margin: 0 5px;
+  .habit-name-ctn {
+    h4 {
+      color: white;
+      margin-bottom: 10px;
+    }
+  }
   input {
-    width: 79%;
     font-size: 1.8rem;
     border-radius: 5px;
     border: none;
     line-height: 2;
     padding-left: 10px;
+    margin-bottom: 5px;
   }
   button {
     background-color: inherit;
@@ -31,5 +37,38 @@
       color: black;
       border: none;
     }
+  }
+  .habit-name {
+    width: 79%;
+    font-size: 1.8rem;
+    border-radius: 5px;
+    border: none;
+    line-height: 2;
+    padding-left: 10px;
+    margin-bottom: 40px;
+  }
+  .habit-type-ctn {
+    color: white;
+    margin-bottom: 20px;
+    h4 {
+      margin-bottom: 10px;
+    }
+    .habit-types {
+      display: flex;
+      .habit-type {
+        margin-right: 20px;
+      }
+    }
+    input {
+      margin-right: 5px;
+    }
+  }
+  .habit-goal-ctn {
+    color: white;
+    display: flex;
+    margin-bottom: 20px;
+    display: flex;
+    flex-direction: column;
+    width: 200px;
   }
 }

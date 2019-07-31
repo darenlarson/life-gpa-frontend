@@ -244,16 +244,20 @@ h6 {
 .habit-form {
   width: 100%;
   display: flex;
-  justify-content: space-between;
+  flex-direction: column;
   margin: 0 5px;
 }
+.habit-form .habit-name-ctn h4 {
+  color: white;
+  margin-bottom: 10px;
+}
 .habit-form input {
-  width: 79%;
   font-size: 1.8rem;
   border-radius: 5px;
   border: none;
   line-height: 2;
   padding-left: 10px;
+  margin-bottom: 5px;
 }
 .habit-form button {
   background-color: inherit;
@@ -269,6 +273,38 @@ h6 {
   background-color: #d87b92;
   color: black;
   border: none;
+}
+.habit-form .habit-name {
+  width: 79%;
+  font-size: 1.8rem;
+  border-radius: 5px;
+  border: none;
+  line-height: 2;
+  padding-left: 10px;
+  margin-bottom: 40px;
+}
+.habit-form .habit-type-ctn {
+  color: white;
+  margin-bottom: 20px;
+}
+.habit-form .habit-type-ctn h4 {
+  margin-bottom: 10px;
+}
+.habit-form .habit-type-ctn .habit-types {
+  display: flex;
+}
+.habit-form .habit-type-ctn .habit-types .habit-type {
+  margin-right: 20px;
+}
+.habit-form .habit-type-ctn input {
+  margin-right: 5px;
+}
+.habit-form .habit-goal-ctn {
+  color: white;
+  margin-bottom: 20px;
+  display: flex;
+  flex-direction: column;
+  width: 200px;
 }
 .habit-wrapper {
   margin: 10px 0;

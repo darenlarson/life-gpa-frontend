@@ -3,7 +3,6 @@ import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
 import Login from "../components/Login";
 import Register from "../components/Register";
-// import "./css/CredentialsView.css";
 import '../css/index.css';
 import { loginUser, registerUser } from '../store/actions';
 

@@ -96,17 +96,23 @@ export const getHabits = () => dispatch => {
     });
 };
 
-export const addHabit = habitName => dispatch => {
+export const addHabit = habitInfo => dispatch => {
   dispatch({ type: ADD_HABIT_START, message: "Adding a habit" });
 
   const userId = localStorage.getItem("id");
-
   const headers = buildHeader();
+  // const today = new Date();
+  // today.setHours(0, 0, 0, 0);
 
-  const today = new Date();
-  today.setHours(0, 0, 0, 0);
-
-  const habitInfo = { habit: habitName, date_created: today };
+  // const finalHabitInfo = {
+  //   habit_name: habitInfo.habitName,
+  //   date_created: today,
+  //   habit_type: habitInfo.habitType,
+  //   days_per_week_goal: habitInfo.daysGoal,
+  //   rating_goal: habitInfo.ratingGoal,
+  //   count_goal: habitInfo.countGoal,
+  //   number_goal: habitInfo.numberGoal
+  //   };
 
   axios
     .post(`${baseURL}/api/habits/${userId}/user-habits`, habitInfo, headers)
