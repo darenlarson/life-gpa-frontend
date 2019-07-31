@@ -164,15 +164,77 @@ h6 {
 }
 .App {
   background-color: #20252B;
-  /* background-color: black; */
   min-height: 100vh;
 }
 .main {
   margin: 0 auto;
   max-width: 1000px;
-  /* border: 1px solid red; */
   display: flex;
   justify-content: center;
+}
+.credentials {
+  width: 95%;
+  display: flex;
+  justify-content: center;
+}
+.login-box {
+  margin: 100px 0;
+  width: 550px;
+}
+.login-box header {
+  display: flex;
+}
+.login-box .header-btn {
+  width: 50%;
+  text-align: center;
+  font-size: 2.5rem;
+  padding: 10px 0;
+  background-color: black;
+  color: #D87A92;
+  font-weight: bold;
+}
+.login-box .header-btn:hover {
+  border-bottom: 1px solid #D87A92;
+  cursor: pointer;
+}
+.selected {
+  border-bottom: 1px solid #D87A92;
+}
+.spinner {
+  display: flex;
+  justify-content: center;
+  margin-top: 200px;
+}
+.homeview-wrapper {
+  width: 600px;
+  margin-bottom: 100px;
+  position: relative;
+}
+.show-description {
+  position: absolute;
+  top: 130px;
+  left: 100px;
+  z-index: 2;
+  background: black;
+  color: white;
+  width: 400px;
+  padding: 20px;
+  text-align: center;
+  border: 1px solid #D87B92;
+  line-height: 1.4;
+}
+.hide-description {
+  display: none;
+}
+@media (max-width: 550px) {
+  .homeview-wrapper {
+    margin: 0 5px;
+  }
+  .show-description {
+    top: 175px;
+    left: 100px;
+    width: 300px;
+  }
 }
 .add-habit-wrapper {
   display: flex;

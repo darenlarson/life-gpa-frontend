@@ -5,7 +5,6 @@ import Header from "./components/Header";
 import CredentialsView from "./views/CredentialsView";
 import HomeView from "./views/HomeView";
 import Footer from "./components/Footer";
-import "./App.css";
 import './css/index.css';
 import MobileFooter from "./components/MobileFooter";
 

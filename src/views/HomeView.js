@@ -5,7 +5,8 @@ import { getHabits, addHabit, completeHabit, deleteHabit, resetData } from '../s
 import LifeGPADisplay from "../components/LifeGPADisplay";
 import HabitsList from "../components/HabitsList";
 import ManageHabits from "../components/ManageHabits";
-import "./css/HomeView.css";
+// import "./css/HomeView.css";
+import '../css/index.css';
 
 import ClipLoader from "react-spinners/ClipLoader";
 

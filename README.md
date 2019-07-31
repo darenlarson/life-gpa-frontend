@@ -9,4 +9,4 @@ LifeGPA was built by myself.
 LifeGPA helps you develop good habits. Just add some habits you'd like to start doing. Then, each day log whether you've completed each habit. LifeGPA will aggregate your habit data into one, easy-to-read Life GPA figure so that you can see how you're doing!
 
 # Technologies used
-React | Node | Express | CSS | HTML | Knex | SQLite
+React | Node | Express | CSS | HTML | Express | Knex | SQLite
