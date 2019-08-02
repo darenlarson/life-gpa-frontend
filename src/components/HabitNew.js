@@ -36,14 +36,14 @@ class Habit extends React.Component {
   }
 
   submitHabitData = event => {
-    console.log('submitHabitData() invoked');
     event.preventDefault();
+    const { habit_type } = this.props.habit;
 
     const habitInfo = {
       ...this.props.habit,
-      rating: this.state.rating === '' ? null : this.state.rating,
-      count: this.state.count === '' ? null : this.state.count,
-      numbeer: this.state.number === '' ? null : this.state.number
+      rating: habit_type === 'rating' ? this.state.rating : null,
+      count: habit_type === 'count' ? this.state.count : null,
+      number: habit_type === 'number' ? this.state.number : null,
     }
     this.props.completeHabit(habitInfo)
   }

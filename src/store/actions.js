@@ -115,6 +115,7 @@ export const addHabit = habitInfo => dispatch => {
     });
 };
 
+
 export const completeHabit = habit => dispatch => {
   dispatch({ type: COMPLETE_HABIT_START, message: "Completing habit" });
   
@@ -142,10 +143,6 @@ export const completeHabit = habit => dispatch => {
 };
 
 
-
-
-
-
 export const resetData = habit => dispatch => {
   dispatch({ type: RESET_HABIT_START, message: "Resetting habit data" });
   
@@ -168,11 +165,6 @@ export const resetData = habit => dispatch => {
       dispatch({ type: RESET_HABIT_FAILURE, payload: err });
     });
 };
-
-
-
-
-
 
 
 export const deleteHabit = habit => dispatch => {
