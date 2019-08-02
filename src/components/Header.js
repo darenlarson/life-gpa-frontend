@@ -27,7 +27,7 @@ const Header = props => {
                   className={`nav-btn hide ${props.history.location.pathname ===
                     "/habits/home" && "selected"}`}
                 >
-                  HOME
+                  TODAY
                 </NavLink>
                 <NavLink
                   to="/habits/home/manage-habits"

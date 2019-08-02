@@ -28,15 +28,19 @@ class AddHabit extends React.Component {
     // Create habitInfo object that will be sent to the server
     const today = new Date();
     today.setHours(0, 0, 0, 0);
+    
+    // Grab userId
+    const userId = localStorage.getItem("id");
 
     const habitInfo = {
-      habitName: this.state.habitName,
+      habit_name: this.state.habitName,
       date_created: today,
-      habitType: this.state.habitType,
-      daysGoal: this.state.daysGoal === '' ? null : this.state.daysGoal,
-      ratingGoal: this.state.ratingGoal === '' ? null : this.state.ratingGoal,
-      countGoal: this.state.countGoal === '' ? null : this.state.countGoal,
-      numberGoal: this.state.numberGoal === '' ? null : this.state.numberGoal
+      habit_type: this.state.habitType,
+      days_per_week_goal: this.state.daysGoal === '' ? null : this.state.daysGoal,
+      ratings_goal: this.state.ratingGoal === '' ? null : this.state.ratingGoal,
+      count_goal: this.state.countGoal === '' ? null : this.state.countGoal,
+      number_goal: this.state.numberGoal === '' ? null : this.state.numberGoal,
+      user_id: userId,
     }
 
     // Sends the new habit to the server

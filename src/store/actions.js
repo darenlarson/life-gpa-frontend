@@ -101,18 +101,6 @@ export const addHabit = habitInfo => dispatch => {
 
   const userId = localStorage.getItem("id");
   const headers = buildHeader();
-  // const today = new Date();
-  // today.setHours(0, 0, 0, 0);
-
-  // const finalHabitInfo = {
-  //   habit_name: habitInfo.habitName,
-  //   date_created: today,
-  //   habit_type: habitInfo.habitType,
-  //   days_per_week_goal: habitInfo.daysGoal,
-  //   rating_goal: habitInfo.ratingGoal,
-  //   count_goal: habitInfo.countGoal,
-  //   number_goal: habitInfo.numberGoal
-  //   };
 
   axios
     .post(`${baseURL}/api/habits/${userId}/user-habits`, habitInfo, headers)
@@ -129,16 +117,16 @@ export const addHabit = habitInfo => dispatch => {
 
 export const completeHabit = habit => dispatch => {
   dispatch({ type: COMPLETE_HABIT_START, message: "Completing habit" });
+  
+  const headers = buildHeader();
 
   const today = new Date();
   today.setHours(0, 0, 0, 0);
-
   const yesterday = new Date(today - 1000 * 60 * 60 * 24);
   yesterday.setHours(0, 0, 0, 0);
 
   const habitInfo = { ...habit, today, yesterday };
 
-  const headers = buildHeader();
 
   axios
     .post(`${baseURL}/api/habits/complete-habit`, habitInfo, headers)
@@ -153,18 +141,23 @@ export const completeHabit = habit => dispatch => {
     });
 };
 
-export const resetData = habit => dispatch => {
-  dispatch({ type: RESET_HABIT_START, message: "Reseting habit data" });
 
+
+
+
+
+export const resetData = habit => dispatch => {
+  dispatch({ type: RESET_HABIT_START, message: "Resetting habit data" });
+  
   const today = new Date();
   today.setHours(0, 0, 0, 0);
 
-  const id = habit.id;
-
   const headers = buildHeader();
+  const body = { id: habit.id, today: today };
+
 
   axios
-    .put(`${baseURL}/api/habits/reset-habit`, id, headers)
+    .put(`${baseURL}/api/habits/reset-habit`, body, headers)
     .then(res => {
       dispatch({ type: RESET_HABIT_SUCCESS, payload: res });
     })
@@ -175,6 +168,12 @@ export const resetData = habit => dispatch => {
       dispatch({ type: RESET_HABIT_FAILURE, payload: err });
     });
 };
+
+
+
+
+
+
 
 export const deleteHabit = habit => dispatch => {
   dispatch({ type: DELETE_HABIT_START, message: "Deleting habit" });
