@@ -13,17 +13,29 @@ class AddHabit extends React.Component {
       ratingGoal: "",
       countGoal: "",
       numberGoal: "",
+      daysGoalError: false,
+      ratingGoalError: false,
     };
   }
 
   // Handler for setting on state habitName, habitType daysGoal, ratingGoal, countGoal, and numberGoal
   handleChange = event => {
-    this.setState({ [event.target.name]: event.target.value });
+    this.setState({ [event.target.name]: event.target.value, daysGoalError: false, ratingGoalError: false, });
   };
 
   // Submits the habit entered, invokes addHabit(), which sends habit to server
   handleSubmit = e => {
     e.preventDefault();
+
+    // Data validation in Days per Week and ratings goal forms
+    if (this.state.habitType === "normal" && (this.state.daysGoal < 1 || this.state.daysGoal > 7)) {
+      this.setState({ daysGoalError: true });
+      return;
+    }
+    if (this.state.habitType === "rating" && (this.state.ratingGoal < 1 || this.state.ratingGoal > 10)) {
+      this.setState({ ratingGoalError: true})
+      return;
+    }
 
     // Create habitInfo object that will be sent to the server
     const today = new Date();
@@ -98,7 +110,9 @@ class AddHabit extends React.Component {
 
           <div className="habit-goal-ctn">
               {this.state.habitType === 'normal' && <input onChange={this.handleChange} value={this.state.daysGoal}    type="text" name="daysGoal"   placeholder="Days per Week" />}
+              {this.state.daysGoalError === true && <p>Please enter a number between 1 and 7</p>}
               {this.state.habitType === 'rating' && <input onChange={this.handleChange} value={this.state.ratingsGoal} type="text" name="ratingGoal" placeholder="Rating out of 10" />}
+              {this.state.ratingGoalError === true && <p>Please enter a number between 1 and 10</p>}
               {this.state.habitType === 'count' &&  <input onChange={this.handleChange} value={this.state.countGoal}   type="text" name="countGoal"  placeholder="Goal for each day" />}
               {this.state.habitType === 'number' && <input onChange={this.handleChange} value={this.state.numberGoal}  type="text" name="numberGoal" placeholder="Target number" />}
           </div>

@@ -6,7 +6,6 @@ class Habit extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      show: false,
       rating: '',
       count: 0,
       number: '',
@@ -63,7 +62,10 @@ class Habit extends React.Component {
       number: habit_type === 'number' ? this.state.number : null,
       last_value_added: last_value_added,
     }
+
     this.props.completeHabit(habitInfo)
+
+    this.setState({ rating: '', number: '' })
   }
 
   dateDiff() {
@@ -84,6 +86,7 @@ class Habit extends React.Component {
         <div className="habit-ctn">
           <div className="primary-info">
             <p className="name">{habit_name}</p>
+            {(habit_type === "normal" && this.dateDiff() === 0) && <p className="name">&#10004;</p> }
             {this.dateDiff() === 0 && <p className="name">{last_value_added}</p>}
           </div>
         </div>
