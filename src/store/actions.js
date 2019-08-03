@@ -89,6 +89,7 @@ export const getHabits = () => dispatch => {
   axios
     .get(`${baseURL}/api/habits/${userId}/user-habits`, headers)
     .then(res => {
+      console.log(res.data);
       dispatch({ type: GET_HABITS_SUCCESS, payload: res.data });
     })
     .catch(err => {
@@ -127,7 +128,6 @@ export const completeHabit = habit => dispatch => {
   yesterday.setHours(0, 0, 0, 0);
 
   const habitInfo = { ...habit, today, yesterday };
-
 
   axios
     .post(`${baseURL}/api/habits/complete-habit`, habitInfo, headers)
