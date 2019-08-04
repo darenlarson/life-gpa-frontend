@@ -28,6 +28,7 @@ class AddHabit extends React.Component {
     e.preventDefault();
 
     // Data validation in Days per Week and ratings goal forms
+    
     if (this.state.habitType === "normal" && (this.state.daysGoal < 1 || this.state.daysGoal > 7)) {
       this.setState({ daysGoalError: true });
       return;
