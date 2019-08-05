@@ -27,7 +27,6 @@ import {
 const initialState = {
   gettingHabits: false,
   habits: [],
-  habitRecords: [],
   totalLifeGPA: 0,
   allCompleted: false,
   loading: true,
@@ -102,9 +101,7 @@ const reducer = (state = initialState, action) => {
     case GET_HABITS_SUCCESS:
       return {
         ...state,
-        habits: action.payload.habits,
-        totalLifeGPA: action.payload.lifeGPA,
-        allCompleted: action.payload.allComplete,
+        habits: action.payload,
         error: false,
         gettingHabits: false,
       }

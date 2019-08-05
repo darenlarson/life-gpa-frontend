@@ -4,9 +4,8 @@ import HabitNew from "./HabitNew";
 import "../css/index.css";
 
 const HabitList = props => {
-  const sortedHabits = props.habits.sort((a, b) => {
-    return new Date(a.last_completed) - new Date(b.last_completed);
-  })
+  console.log(props);
+  const sortedHabits = props.habits.sort((a, b) =>  new Date(a.last_completed) - new Date(b.last_completed));
 
   return (
     <div>

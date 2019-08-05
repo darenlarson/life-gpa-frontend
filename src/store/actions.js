@@ -11,6 +11,9 @@ export const REGISTER_FAILURE = "REGISTER_FAILURE";
 export const GET_HABITS_START = "GET_HABITS_START";
 export const GET_HABITS_SUCCESS = "GET_HABITS_SUCCESS";
 export const GET_HABITS_FAILURE = "GET_HABITS_FAILURE";
+export const GET_HABIT_RECORDS_START = "GET_HABIT_RECORDS_START";
+export const GET_HABIT_RECORDS_SUCCESS = "GET_HABIT_RECORDS_SUCCESS";
+export const GET_HABIT_RECORDS_FAILURE = "GET_HABIT_RECORDS_FAILURE";
 export const ADD_HABIT_START = "ADD_HABIT_START";
 export const ADD_HABIT_SUCCESS = "ADD_HABIT_SUCCESS";
 export const ADD_HABIT_FAILURE = "ADD_HABIT_FAILURE";
@@ -89,13 +92,13 @@ export const getHabits = () => dispatch => {
   axios
     .get(`${baseURL}/api/habits/${userId}/user-habits`, headers)
     .then(res => {
-      console.log(res.data);
       dispatch({ type: GET_HABITS_SUCCESS, payload: res.data });
     })
     .catch(err => {
       dispatch({ type: GET_HABITS_FAILURE, payload: err });
     });
 };
+
 
 export const addHabit = habitInfo => dispatch => {
   dispatch({ type: ADD_HABIT_START, message: "Adding a habit" });

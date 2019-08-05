@@ -73,6 +73,14 @@ class Habit extends React.Component {
     today.setHours(0, 0, 0, 0);
     const lastCompleted = new Date(this.props.habit.last_completed);
 
+    // // DELETE
+    // let day1 = today.getDay();
+    // console.log("day1:", day1);
+
+    // let day2 = lastCompleted.getDay();
+    // console.log("day2:", day2);
+    // // DELETE
+
     return lastCompleted - today;
   }
 

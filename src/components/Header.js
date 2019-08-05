@@ -3,7 +3,6 @@ import PropTypes from "prop-types";
 import { connect } from 'react-redux';
 import { NavLink } from "react-router-dom";
 import { logoutUser } from '../store/actions';
-// import "./css/Header.css";
 import '../css/index.css';
 
 const Header = props => {
@@ -35,6 +34,13 @@ const Header = props => {
                     "/habits/home/manage-habits" && "selected"}`}
                 >
                   MANAGE HABITS
+                </NavLink>
+                <NavLink
+                  to="/habits/home/habit-data"
+                  className={`nav-btn hide ${props.history.location.pathname ===
+                    "/habits/home/habit-data" && "selected"}`}
+                >
+                  HABIT DATA
                 </NavLink>
                 <button
                   className="nav-btn"
