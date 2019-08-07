@@ -1,25 +1,26 @@
 import React from "react";
-import '../css/index.css';
+import "../css/index.css";
 
 class HabitData extends React.Component {
   constructor(props) {
     super(props);
-    this.state = {
-
-    };
+    this.state = {};
   }
 
   render() {
-    const { habit_name, records } = this.props
-    console.log(records);
+    const { habit_name, habit_type, records, summaryData } = this.props;
+    console.log(this.props);
     return (
       <div className="data-ctn">
         <h4>{habit_name}</h4>
-        {records.map(record => (
-          <div>{record.habit_name}</div>
-        ))}
+        {habit_type === "normal" && (
+          <div>
+            <p>completions this week: {summaryData.completions_this_week}</p>
+            <p>Streak: {summaryData.streak}</p>
+          </div>
+        )}
       </div>
-    )
+    );
   }
 }
 

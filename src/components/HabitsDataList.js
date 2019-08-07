@@ -9,7 +9,9 @@ const HabitsDataList = props => {
         <HabitData
           key={habit.id}
           habit_name={habit.habit_name}
+          habit_type={habit.habit_type}
           records={habit.records}
+          summaryData={habit.summaryData}
         />
       ))}
     </div>
