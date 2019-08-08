@@ -8,17 +8,36 @@ class HabitData extends React.Component {
   }
 
   render() {
-    const { habit_name, habit_type, records, summaryData } = this.props;
-    console.log(this.props);
+    const {
+      date_created,
+      habit_name,
+      habit_type,
+      last_completed,
+      last_value_added,
+      number_goal,
+      number_start_value,
+      summary_data
+    } = this.props;
+
     return (
       <div className="data-ctn">
         <h4>{habit_name}</h4>
-        {habit_type === "normal" && (
-          <div>
-            <p>completions this week: {summaryData.completions_this_week}</p>
-            <p>Streak: {summaryData.streak}</p>
-          </div>
-        )}
+        <div>
+          {habit_type === "normal" && (
+            <>
+              <p>completions this week: {summary_data.completions_this_week}</p>
+              <p>Streak: {summary_data.streak}</p>
+            </>
+          )}
+          {habit_type === "number" && (
+            <>
+              <p>Goal: {number_goal}</p>
+              <p>Start: {number_start_value} &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; {date_created}</p>
+              <p>Last Entry: {last_value_added} &nbsp;&nbsp;&nbsp; {last_completed}</p>
+              <p>Average Since Inception: {summary_data.inception_average}</p>
+            </>
+          )}
+        </div>
       </div>
     );
   }

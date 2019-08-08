@@ -8,10 +8,14 @@ const HabitsDataList = props => {
       {props.habits.map(habit => (
         <HabitData
           key={habit.id}
+          date_created={habit.date_created.slice(0, 10)}
           habit_name={habit.habit_name}
           habit_type={habit.habit_type}
-          records={habit.records}
-          summaryData={habit.summaryData}
+          last_completed={habit.last_completed.slice(0, 10)}
+          last_value_added={habit.last_value_added}
+          number_goal={habit.number_goal}
+          number_start_value={habit.records[0].number}
+          summary_data={habit.summary_data}
         />
       ))}
     </div>
