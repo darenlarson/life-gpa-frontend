@@ -16,6 +16,7 @@ class HabitData extends React.Component {
       last_value_added,
       number_goal,
       number_start_value,
+      ratings_goal,
       summary_data
     } = this.props;
 
@@ -35,6 +36,15 @@ class HabitData extends React.Component {
               <p>Start: {number_start_value} &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; {date_created}</p>
               <p>Last Entry: {last_value_added} &nbsp;&nbsp;&nbsp; {last_completed}</p>
               <p>Average Since Inception: {summary_data.inception_average}</p>
+            </>
+          )}
+          {habit_type === "rating" && (
+            <>
+              <p>Goal: {ratings_goal}</p>
+              <p>Last Entry: {last_value_added} &nbsp;&nbsp;&nbsp; {last_completed}</p>
+              <p>Average Since Inception: {summary_data.inception_average}</p>
+              <p>30 Day Average: {summary_data.thirty_day_average}</p>
+              <p>7 Day Average: {summary_data.seven_day_average}</p>
             </>
           )}
         </div>

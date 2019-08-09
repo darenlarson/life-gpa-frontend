@@ -15,6 +15,7 @@ const HabitsDataList = props => {
           last_value_added={habit.last_value_added}
           number_goal={habit.number_goal}
           number_start_value={habit.records[0].number}
+          ratings_goal={habit.ratings_goal}
           summary_data={habit.summary_data}
         />
       ))}

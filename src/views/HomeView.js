@@ -2,8 +2,6 @@ import React from "react";
 import { Route } from "react-router-dom";
 import { connect } from "react-redux";
 import { getHabits, addHabit, completeHabit, deleteHabit, resetData } from "../store/actions";
-// import LifeGPADisplay from "../components/LifeGPADisplay";
-// import HabitsList from "../components/HabitsList"; 
 import HabitsListNew from "../components/HabitsListNew";
 import ManageHabits from "../components/ManageHabits";
 import HabitsDataList from "../components/HabitsDataList";
