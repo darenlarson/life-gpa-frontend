@@ -9,6 +9,7 @@ class HabitData extends React.Component {
 
   render() {
     const {
+      count_goal,
       date_created,
       habit_name,
       habit_type,
@@ -45,6 +46,11 @@ class HabitData extends React.Component {
               <p>Average Since Inception: {summary_data.inception_average}</p>
               <p>30 Day Average: {summary_data.thirty_day_average}</p>
               <p>7 Day Average: {summary_data.seven_day_average}</p>
+            </>
+          )}
+          {habit_type === "count" && (
+            <>
+              <p>Goal: {count_goal}</p>
             </>
           )}
         </div>
