@@ -51,6 +51,10 @@ class HabitData extends React.Component {
           {habit_type === "count" && (
             <>
               <p>Goal: {count_goal}</p>
+              <p>Last Entry: {last_value_added} &nbsp;&nbsp;&nbsp; {last_completed}</p>
+              <p>Average Since Inception: {summary_data.inception_average}</p>
+              <p>30 Day Average: {summary_data.thirty_day_average}</p>
+              <p>7 Day Average: {summary_data.seven_day_average}</p>
             </>
           )}
         </div>
