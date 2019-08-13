@@ -13,7 +13,7 @@ const Header = props => {
     <header className="header-wrapper">
       <div className="header-ctn">
         <div className="logo-wrapper">
-          <NavLink to="/home" className="logo">
+          <NavLink to="/habits/home" className="logo">
             <h2>LifeGPA</h2>
           </NavLink>
         </div>

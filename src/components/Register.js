@@ -13,6 +13,10 @@ class Register extends React.Component {
     };
   }
 
+  componentDidMount() {
+    this.nameInput.focus();
+  }
+
   // Handler to save form input to state
   handleChange = event => {
     this.setState({ [event.target.name]: event.target.value });
@@ -37,6 +41,7 @@ class Register extends React.Component {
               onChange={this.handleChange}
               value={this.state.first_name}
               placeholder="First Name"
+              ref={(input) => { this.nameInput = input; }}
             />
             <input
               required

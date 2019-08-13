@@ -12,6 +12,10 @@ class Login extends React.Component {
     };
   }
 
+  componentDidMount() {
+    this.nameInput.focus();
+  }
+
   // Handler for entering form data to state
   handleChange = event => {
     this.setState({ [event.target.name]: event.target.value });
@@ -36,6 +40,7 @@ class Login extends React.Component {
               onChange={this.handleChange}
               value={this.state.username}
               placeholder="Username"
+              ref={(input) => { this.nameInput = input; }}
             />
             <input
               required

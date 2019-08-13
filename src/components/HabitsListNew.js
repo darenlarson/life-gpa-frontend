@@ -8,14 +8,13 @@ const HabitList = props => {
   const sortedHabits = props.habits.sort((a, b) =>  new Date(a.last_completed) - new Date(b.last_completed));
 
   return (
-    <div>
-      <p
-        className={`${props.allCompleted === true ? "complete" : "incomplete"}`} >You're all done. Keep up the good work!</p>
+    <>
+      {/* <p className={`${props.allCompleted === true ? "complete" : "incomplete"}`} >You're all done. Keep up the good work!</p> */}
 
       {sortedHabits.map(habit => (
         <HabitNew habit={habit} key={habit.id} completeHabit={props.completeHabit} />
       ))}
-    </div>
+    </>
   );
 };
 
