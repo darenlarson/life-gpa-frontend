@@ -2,7 +2,7 @@ import React from "react";
 import { Route } from "react-router-dom";
 import { connect } from "react-redux";
 import { getHabits, addHabit, completeHabit, deleteHabit, resetData } from "../store/actions";
-import HabitsListNew from "../components/HabitsListNew";
+import HabitsList from "../components/HabitsList";
 import ManageHabits from "../components/ManageHabits";
 import HabitsDataList from "../components/HabitsDataList";
 import "../css/index.css";
@@ -46,7 +46,7 @@ class HomeView extends React.Component {
             exact
             path="/habits/home"
             render={props => (
-              <HabitsListNew
+              <HabitsList
                 {...props}
                 habits={this.props.habits}
                 completeHabit={this.props.completeHabit}

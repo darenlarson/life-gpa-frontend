@@ -1,44 +1,103 @@
 import React from "react";
 import PropTypes from 'prop-types';
-// import "./css/Habit.css";
 import '../css/index.css';
 
 class Habit extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      show: false
+      rating: '',
+      count: 0,
+      number: '',
     };
   }
-  
-  // Invoked when stats button clicked, which expands the habit to show GPA stats
-  toggleVisibility = () => {
-    // Stat element shown when this.state.show === true
-    this.setState({ show: !this.state.show });
+
+  componentDidMount() {
+    if (this.dateDiff() === 0) {
+      this.setState({ count: this.props.habit.last_value_added });
+    }
+  }
+
+  // Handler for setting on state from forms
+  handleChange = event => {
+    this.setState({ [event.target.name]: event.target.value });
   };
 
-  render() {
-    // today and lastCompleted date variable, used to compare habit's last completed date (to render checkmark and button color)
+  countChange = (event, direction) => {
+    if (direction === "increment") {
+      this.setState(prevState => {
+        return { count: prevState.count + 1 }
+      }, () => this.submitHabitData(event))
+    } else {
+      if (this.state.count > 1) {
+        this.setState(prevState => {
+          return { count: prevState.count - 1}
+        }, () => this.submitHabitData(event))
+      } else {
+        this.setState(prevState => {
+          return { count: 0 }
+        }, () => this.submitHabitData(event))
+      }
+    }
+  }
+
+  submitHabitData = event => {
+    event.preventDefault();
+    const { habit_type } = this.props.habit;
+
+    let last_value_added;
+
+    if (habit_type === 'rating') {
+      last_value_added = this.state.rating;
+    } else if (habit_type === 'count') {
+      last_value_added = this.state.count;
+    } else {
+      last_value_added = this.state.number;
+    }
+
+    const habitInfo = {
+      ...this.props.habit,
+      rating: habit_type === 'rating' ? this.state.rating : null,
+      count: habit_type === 'count' ? this.state.count : null,
+      number: habit_type === 'number' ? this.state.number : null,
+      last_value_added: last_value_added,
+    }
+
+    this.props.completeHabit(habitInfo)
+
+    this.setState({ rating: '', number: '' })
+  }
+
+  dateDiff() {
     const today = new Date();
     today.setHours(0, 0, 0, 0);
     const lastCompleted = new Date(this.props.habit.last_completed);
 
+    return lastCompleted - today;
+  }
+
+
+  render() {
+    const { rating, number } = this.state;
+    const { habit_name, habit_type, last_value_added } = this.props.habit;
+
     return (
-      <div className="habit-wrapper">
-        <div className="btn-ctn">
-          <button onClick={() => this.props.completeHabit(this.props.habit)} className={`status-btn ${lastCompleted - today === 0 ? "completed" : "noncompleted"}`}>Done</button>
-        </div>
-        <div className="habit-ctn">
-          <div className="primary-info">
-            <p className="name">{this.props.habit.habit_name} {lastCompleted - today === 0 && <span>&#10004;</span>}</p>
-            <p className="stats-btn noselect" onClick={this.toggleVisibility}>stats...</p>
-          </div>
-          <div className={`more-info ${this.state.show ? "visible" : "hidden"}`} >
-            <p className="GPA"><span className="gpa-label">30gpa:</span> {Math.round(this.props.habit.thirtyGPA * 100)}%</p>
-            <p className="GPA"><span className="gpa-label">60GPA:</span> {Math.round(this.props.habit.sixtyGPA * 100)}%</p>
-            <p className="GPA"><span className="gpa-label">90GPA:</span> {Math.round(this.props.habit.ninetyGPA * 100)}%</p>
-          </div>
-        </div>
+      <div className={`habit-ctn ${this.dateDiff() === 0 && "completed-habit"}`}>
+
+        <p className="name">{habit_name}</p>
+        {(this.dateDiff() === 0) && <p className="check">&#10004;</p> }
+        {this.dateDiff() === 0 && <p className="last-value">{last_value_added}</p>}
+
+        <form className="response-ctn" onSubmit={this.submitHabitData}>
+          {habit_type === "normal" && <div className="btn-ctn"><button className={`status-btn ${this.dateDiff() === 0 ? "completed-habit" : "noncompleted"}`}>Done</button></div>}
+          {habit_type === "rating" && <input className="rating-form" type="text" name="rating" onChange={this.handleChange} value={rating} />}
+          {habit_type === "count" && <div className="count-btns">
+            <button className="count-btn" onClick={(event) => this.countChange(event, "decrement")}>-</button>
+            <button className="count-btn" onClick={(event) => this.countChange(event, "increment")}>+</button>
+          </div>}
+          {habit_type === "number" && <input className="number-form" type="text" name="number" onChange={this.handleChange} value={number} />}
+        </form>
+
       </div>
     );
   }
