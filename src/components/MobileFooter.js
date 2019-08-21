@@ -1,7 +1,7 @@
 import React from "react";
 import { NavLink } from "react-router-dom";
 // import "./css/MobileFooter.css";
-import '../css/index.css';
+import "../css/index.css";
 
 const MobileFooter = props => {
   return (
@@ -11,7 +11,7 @@ const MobileFooter = props => {
         className={`mobile-nav-btn ${props.history.location.pathname ===
           "/habits/home" && "selected"}`}
       >
-        HOME
+        TODAY
       </NavLink>
       <NavLink
         to="/habits/home/manage-habits"
@@ -19,6 +19,13 @@ const MobileFooter = props => {
           "/habits/home/manage-habits" && "selected"}`}
       >
         MANAGE HABITS
+      </NavLink>
+      <NavLink
+        to="/habits/home/habit-data"
+        className={`mobile-nav-btn ${props.history.location.pathname ===
+          "/habits/home/habit-data" && "selected"}`}
+      >
+        HABIT DATA
       </NavLink>
     </div>
   );

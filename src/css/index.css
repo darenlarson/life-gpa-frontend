@@ -206,14 +206,10 @@ h6 {
   margin-top: 200px;
 }
 .homeview-wrapper {
-  width: 700px;
+  max-width: 700px;
+  width: 95%;
   margin: 25px 0 100px 0;
   position: relative;
-}
-@media (max-width: 550px) {
-  .homeview-wrapper {
-    margin: 0 5px;
-  }
 }
 .add-habit-wrapper {
   display: flex;
@@ -302,7 +298,7 @@ h6 {
 }
 @media (max-width: 550px) {
   .habit-ctn .name {
-    width: 240px;
+    width: 200px;
   }
 }
 .habit-ctn .check {
@@ -409,12 +405,12 @@ h6 {
 .header-ctn .nav-btn:focus {
   outline: 0;
 }
-@media (max-width: 550px) {
+@media (max-width: 800px) {
   .header-ctn .nav-btn {
     margin: 0;
   }
 }
-@media (max-width: 550px) {
+@media (max-width: 800px) {
   .header-ctn .hide {
     display: none;
   }
@@ -1619,7 +1615,7 @@ h6 {
   width: 100%;
   bottom: 0;
 }
-@media (max-width: 550px) {
+@media (max-width: 800px) {
   .mobile-footer-wrapper {
     display: flex;
     justify-content: center;
