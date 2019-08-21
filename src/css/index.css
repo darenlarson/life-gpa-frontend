@@ -322,6 +322,7 @@ h6 {
 }
 .btn-ctn .status-btn {
   border-radius: 5px;
+  border-color: black;
   width: 100%;
   padding: 5px 0;
   cursor: pointer;
@@ -330,7 +331,10 @@ h6 {
   outline: 0;
 }
 .btn-ctn .status-btn:hover {
-  background: #20252b;
+  background: #d87b92;
+}
+.completed-btn {
+  background: none;
 }
 .response-ctn {
   width: 75px;

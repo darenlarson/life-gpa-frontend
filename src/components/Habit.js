@@ -89,7 +89,7 @@ class Habit extends React.Component {
         {this.dateDiff() === 0 && <p className="last-value">{last_value_added}</p>}
 
         <form className="response-ctn" onSubmit={this.submitHabitData}>
-          {habit_type === "normal" && <div className="btn-ctn"><button className={`status-btn ${this.dateDiff() === 0 ? "completed-habit" : "noncompleted"}`}>Done</button></div>}
+          {habit_type === "normal" && <div className="btn-ctn"><button className={`status-btn ${this.dateDiff() === 0 && "completed-btn"}`}>{this.dateDiff() === 0 ? "Undo" : "Done"}</button></div>}
           {habit_type === "rating" && <input className="rating-form" type="text" name="rating" onChange={this.handleChange} value={rating} />}
           {habit_type === "count" && <div className="count-btns">
             <button className="count-btn" onClick={(event) => this.countChange(event, "decrement")}>-</button>
