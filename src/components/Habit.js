@@ -24,21 +24,35 @@ class Habit extends React.Component {
   };
 
   countChange = (event, direction) => {
-    if (direction === "increment") {
-      this.setState(prevState => {
-        return { count: prevState.count + 1 }
-      }, () => this.submitHabitData(event))
-    } else {
-      if (this.state.count > 1) {
-        this.setState(prevState => {
-          return { count: prevState.count - 1}
-        }, () => this.submitHabitData(event))
+    console.log("countChange() invoked")
+
+    this.setState(prevState => {
+      if (direction === "increment") {
+        return { count: prevState.count + 1};
       } else {
-        this.setState(prevState => {
-          return { count: 0 }
-        }, () => this.submitHabitData(event))
+        if (prevState.count > 1) {
+          return { count: prevState.count - 1};
+        } else {
+          return { count: 0 };
+        }
       }
-    }
+    }, () => this.submitHabitData(event));
+
+    // if (direction === "increment") {
+    //   this.setState(prevState => {
+    //     return { count: prevState.count + 1 }
+    //   }, () => this.submitHabitData(event))
+    // } else {
+    //   if (this.state.count > 1) {
+    //     this.setState(prevState => {
+    //       return { count: prevState.count - 1}
+    //     }, () => this.submitHabitData(event))
+    //   } else {
+    //     this.setState(prevState => {
+    //       return { count: 0 }
+    //     }, () => this.submitHabitData(event))
+    //   }
+    // }
   }
 
   submitHabitData = event => {
@@ -92,8 +106,8 @@ class Habit extends React.Component {
           {habit_type === "normal" && <div className="btn-ctn"><button className={`status-btn ${this.dateDiff() === 0 && "completed-btn"}`}>{this.dateDiff() === 0 ? "Undo" : "Done"}</button></div>}
           {habit_type === "rating" && <input className="rating-form" type="text" name="rating" onChange={this.handleChange} value={rating} />}
           {habit_type === "count" && <div className="count-btns">
-            <button className="count-btn" onClick={(event) => this.countChange(event, "decrement")}>-</button>
-            <button className="count-btn" onClick={(event) => this.countChange(event, "increment")}>+</button>
+            <button type="button" className="count-btn" onClick={(event) => this.countChange(event, "decrement")}>-</button>
+            <button type="button" className="count-btn" onClick={(event) => this.countChange(event, "increment")}>+</button>
           </div>}
           {habit_type === "number" && <input className="number-form" type="text" name="number" onChange={this.handleChange} value={number} />}
         </form>
