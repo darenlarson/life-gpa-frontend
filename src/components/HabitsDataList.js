@@ -2,6 +2,7 @@ import React from "react";
 import HabitData from "./HabitData";
 
 const HabitsDataList = props => {
+  console.log(props);
   return (
     <div>
       {props.habits.map(habit => (

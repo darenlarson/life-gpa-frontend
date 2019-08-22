@@ -27,8 +27,8 @@ export const DELETE_HABIT_START = "DELETE_HABIT_START";
 export const DELETE_HABIT_SUCCESS = "DELETE_HABIT_SUCCESS";
 export const DELETE_HABIT_FAILURE = "DELETE_HABIT_FAILURE";
 
-// const baseURL = `https://life-gpa.herokuapp.com`;
-const baseURL = 'http://localhost:5000';
+const baseURL = `https://life-gpa.herokuapp.com`;
+// const baseURL = 'http://localhost:5000';
 
 export const loginUser = (history, userInfo) => dispatch => {
   dispatch({ type: LOGIN_START, message: "Logging user in" });

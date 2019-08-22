@@ -30,8 +30,9 @@ class HabitData extends React.Component {
           {habit_type === "normal" && (
             <>
               <p>completions this week: {summary_data.completions_this_week}</p>
-              <p>Streak: {summary_data.streak}</p>
+              <p>Current Streak: {summary_data.streak}</p>
               <p>Weekly Goal Progression: {summary_data.completions_this_week}/{days_per_week_goal}</p>
+              <p>Best Streak: {summary_data.longest_streak}</p>
             </>
           )}
           {habit_type === "number" && (
