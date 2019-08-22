@@ -1,4 +1,5 @@
 import React from "react";
+import { NavLink } from "react-router-dom";
 import "../css/index.css";
 
 class HabitData extends React.Component {
@@ -14,6 +15,7 @@ class HabitData extends React.Component {
       days_per_week_goal,
       habit_name,
       habit_type,
+      id,
       last_completed,
       last_value_added,
       number_goal,
@@ -22,10 +24,10 @@ class HabitData extends React.Component {
       summary_data
     } = this.props;
 
-
     return (
       <div className="data-ctn">
         <h4>{habit_name}</h4>
+        <NavLink to={`/habits/home/habit-data/${id}`}><p>more info...</p></NavLink>
         <div>
           {habit_type === "normal" && (
             <>

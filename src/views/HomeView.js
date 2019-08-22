@@ -5,6 +5,7 @@ import { getHabits, addHabit, completeHabit, deleteHabit, resetData } from "../s
 import HabitsList from "../components/HabitsList";
 import ManageHabits from "../components/ManageHabits";
 import HabitsDataList from "../components/HabitsDataList";
+import HabitDataFull from '../components/HabitDataFull';
 import "../css/index.css";
 
 import ClipLoader from "react-spinners/ClipLoader";
@@ -14,6 +15,8 @@ class HomeView extends React.Component {
     super(props);
     this.state = {
       loading: true,
+      habitInfo: null,
+      habitRecords: null,
     };
   }
 
@@ -25,6 +28,18 @@ class HomeView extends React.Component {
     setTimeout(() => {
       this.setState({ loading: false });
     }, 500);
+  }
+
+  getHabitInfo = habitId => {
+    const habitInfo = this.props.habits.find(habit => {
+      return habit.id.toString() === habitId;
+    })
+
+    const habitRecords = habitInfo.records.map(record => {
+      return { x: new Date(record.date_completed), y: record.number }
+    })
+
+    this.setState({ habitInfo: habitInfo, habitRecords: habitRecords })
   }
 
   render() {
@@ -69,11 +84,24 @@ class HomeView extends React.Component {
           />
 
           <Route
+            exact
             path="/habits/home/habit-data"
             render={props => (
               <HabitsDataList
                 {...props}
                 habits={this.props.habits}
+              />
+            )}
+          />
+
+          <Route
+            path="/habits/home/habit-data/:id"
+            render={props => (
+              <HabitDataFull
+                {...props}
+                getHabitInfo={this.getHabitInfo}
+                habitInfo={this.state.habitInfo}
+                habitRecords={this.state.habitRecords}
               />
             )}
           />

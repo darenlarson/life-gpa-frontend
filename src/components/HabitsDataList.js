@@ -2,12 +2,13 @@ import React from "react";
 import HabitData from "./HabitData";
 
 const HabitsDataList = props => {
-  console.log(props);
+  // console.log(props);
   return (
     <div>
       {props.habits.map(habit => (
         <HabitData
           key={habit.id}
+          id={habit.id}
           count_goal={habit.count_goal}
           date_created={habit.date_created.slice(0, 10)}
           days_per_week_goal={habit.days_per_week_goal}
