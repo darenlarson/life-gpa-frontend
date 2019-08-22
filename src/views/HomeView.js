@@ -85,7 +85,7 @@ class HomeView extends React.Component {
 }
 
 const mapStateToProps = state => {
-  console.log(state.habits)
+  // console.log(state.habits)
   return {
     habits: state.habits,
     allCompleted: state.allCompleted,

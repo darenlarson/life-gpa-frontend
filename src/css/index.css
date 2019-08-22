@@ -1618,15 +1618,13 @@ h6 {
 @media (max-width: 800px) {
   .mobile-footer-wrapper {
     display: flex;
-    justify-content: center;
+    justify-content: space-around;
   }
 }
 .mobile-footer-wrapper .mobile-nav-btn {
-  margin: 0 30px;
   font-size: 1.8rem;
   color: white;
   text-decoration: none;
-  width: 50%;
   text-align: center;
 }
 .register-wrapper {

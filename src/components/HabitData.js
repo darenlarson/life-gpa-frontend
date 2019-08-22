@@ -11,6 +11,7 @@ class HabitData extends React.Component {
     const {
       count_goal,
       date_created,
+      days_per_week_goal,
       habit_name,
       habit_type,
       last_completed,
@@ -21,6 +22,7 @@ class HabitData extends React.Component {
       summary_data
     } = this.props;
 
+
     return (
       <div className="data-ctn">
         <h4>{habit_name}</h4>
@@ -29,6 +31,7 @@ class HabitData extends React.Component {
             <>
               <p>completions this week: {summary_data.completions_this_week}</p>
               <p>Streak: {summary_data.streak}</p>
+              <p>Weekly Goal Progression: {summary_data.completions_this_week}/{days_per_week_goal}</p>
             </>
           )}
           {habit_type === "number" && (
