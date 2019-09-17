@@ -21,8 +21,8 @@ import adjustImg from "../assets/adjust.svg";
 import sixImg from "../assets/six.svg";
 import achieveImg from "../assets/achieve.svg";
 
-// const baseURL = 'https://life-gpa.netlify.com';
-const baseURL = 'http://localhost:3000';
+const baseURL = 'https://life-gpa.netlify.com';
+// const baseURL = 'http://localhost:3000';
 
 const LandingPage = () => {
   return (
