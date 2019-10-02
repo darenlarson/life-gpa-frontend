@@ -1,5 +1,5 @@
 import React from "react";
-import PropTypes from 'prop-types';
+// import PropTypes from 'prop-types';
 // import "./css/ManageHabit.css";
 import '../css/index.css';
 
@@ -20,16 +20,16 @@ const ManageHabit = props => {
   );
 };
 
-ManageHabit.propTypes = {
-  habit: PropTypes.shape({
-    id: PropTypes.number.isRequired,
-    habit_name: PropTypes.string.isRequired,
-    user_id: PropTypes.number.isRequired,
-    date_created: PropTypes.string.isRequired,
-    last_completed: PropTypes.string.isRequired
-  }),
-  resetData: PropTypes.func.isRequired,
-  deleteHabit: PropTypes.func.isRequired
-}
+// ManageHabit.propTypes = {
+//   habit: PropTypes.shape({
+//     id: PropTypes.number.isRequired,
+//     habit_name: PropTypes.string.isRequired,
+//     user_id: PropTypes.number.isRequired,
+//     date_created: PropTypes.string.isRequired,
+//     last_completed: PropTypes.string.isRequired
+//   }),
+//   resetData: PropTypes.func.isRequired,
+//   deleteHabit: PropTypes.func.isRequired
+// }
 
 export default ManageHabit;

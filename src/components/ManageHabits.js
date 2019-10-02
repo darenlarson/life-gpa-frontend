@@ -1,5 +1,5 @@
 import React from "react";
-import PropTypes from 'prop-types';
+// import PropTypes from 'prop-types';
 import ManageHabit from "./ManageHabit";
 import AddHabit from "./AddHabit";
 import '../css/index.css';
@@ -20,11 +20,11 @@ const ManageHabits = props => {
   );
 };
 
-ManageHabits.propTypes = {
-  habits: PropTypes.array.isRequired,
-  resetData: PropTypes.func.isRequired,
-  deleteHabit: PropTypes.func.isRequired,
-  addHabit: PropTypes.func.isRequired
-}
+// ManageHabits.propTypes = {
+//   habits: PropTypes.array.isRequired,
+//   resetData: PropTypes.func.isRequired,
+//   deleteHabit: PropTypes.func.isRequired,
+//   addHabit: PropTypes.func.isRequired
+// }
 
 export default ManageHabits;
