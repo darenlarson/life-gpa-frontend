@@ -248,6 +248,9 @@ h6 {
   color: black;
   border: none;
 }
+.habit-form label {
+  margin-right: 10px;
+}
 .habit-form .habit-name {
   width: 100%;
   font-size: 1.8rem;

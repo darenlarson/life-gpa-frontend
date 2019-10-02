@@ -61,14 +61,7 @@ class AddHabit extends React.Component {
     this.props.addHabit(habitInfo);
 
     // Resets the add habit form to blank
-    this.setState({
-      habitName: "",
-      habitType: "",
-      daysGoal: "",
-      ratingGoal: "",
-      countGoal: "",
-      numberGoal: "",
-      });
+    this.setState({ habitName: "", habitType: "", daysGoal: "", ratingGoal: "", countGoal: "", numberGoal: "" });
   };
 
   render() {
@@ -80,36 +73,26 @@ class AddHabit extends React.Component {
         <form className="habit-form" onSubmit={this.handleSubmit}>
           <div className="habit-name-ctn">
             <h4>Habit Name</h4>
-            <input
-              className="habit-name"
-              required
-              type="text"
-              name="habitName"
-              onChange={this.handleChange}
-              value={habitName}
-              placeholder="Enter a name for your habit..."
-            />
+            <input required className="habit-name" type="text" name="habitName" onChange={this.handleChange} value={habitName} placeholder="Enter a name for your habit..." />
           </div>
 
           <div className="habit-type-ctn">
             <h4>Habit Type</h4>
             <div className="habit-types">
               {radioButtons.map(radio => (
-                <div className="habit-type" key={radio}>
-                  <label><input checked={radio === habitType} onChange={this.handleChange} type="radio" id={radio} name="habitType" value={radio} />{radio}</label>
-                </div>
+                <label><input checked={radio === habitType} onChange={this.handleChange} type="radio" id={radio} name="habitType" value={radio} />{radio}</label>
               ))}
             </div>
           </div>
 
           <div className="habit-goal-ctn">
-            {habitType === 'normal' && <input onChange={this.handleChange} value={daysGoal}    type="text" name="daysGoal"   placeholder="Days per Week" />}
-            {habitType === 'rating' && <input onChange={this.handleChange} value={ratingsGoal} type="text" name="ratingGoal" placeholder="Rating out of 10" />}
-            {habitType === 'count' &&  <input onChange={this.handleChange} value={countGoal}   type="text" name="countGoal"  placeholder="Goal for each day" />}
-            {habitType === 'number' && <input onChange={this.handleChange} value={numberGoal}  type="text" name="numberGoal" placeholder="Target number" />}
-            {daysGoalError === true && <p>Please enter a number between 1 and 7</p>}
-            {ratingGoalError === true && <p>Please enter a number between 1 and 10</p>}
+            {habitType === 'normal' && <input onChange={this.handleChange} value={daysGoal}    type="number" name="daysGoal"   placeholder="Days per Week" />}
+            {habitType === 'rating' && <input onChange={this.handleChange} value={ratingsGoal} type="number" name="ratingGoal" placeholder="Rating out of 10" />}
+            {habitType === 'count' &&  <input onChange={this.handleChange} value={countGoal}   type="number" name="countGoal"  placeholder="Goal for each day" />}
+            {habitType === 'number' && <input onChange={this.handleChange} value={numberGoal}  type="number" name="numberGoal" placeholder="Target number" />}
           </div>
+          {daysGoalError === true && <p style={{border: '1px solid red'}}>Please enter a number between 1 and 7</p>}
+          {ratingGoalError === true && <p>Please enter a number between 1 and 10</p>}
 
           <button type="submit">ADD</button>
         </form>
